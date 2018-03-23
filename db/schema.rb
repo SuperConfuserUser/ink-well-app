@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20180323000336) do
   create_table "ink_color_families", force: :cascade do |t|
     t.integer "ink_id"
     t.integer "color_family_id"
+    t.index ["color_family_id"], name: "index_ink_color_families_on_color_family_id"
+    t.index ["ink_id"], name: "index_ink_color_families_on_ink_id"
   end
 
   create_table "inks", force: :cascade do |t|
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 20180323000336) do
     t.text "note"
     t.boolean "favorite"
     t.integer "user_id"
+    t.index ["ink_brand_id"], name: "index_inks_on_ink_brand_id"
+    t.index ["user_id"], name: "index_inks_on_user_id"
   end
 
   create_table "pen_brands", force: :cascade do |t|
@@ -43,14 +47,18 @@ ActiveRecord::Schema.define(version: 20180323000336) do
   end
 
   create_table "pens", force: :cascade do |t|
-    t.integer "type_id"
-    t.integer "brand_id"
+    t.integer "pen_type_id"
+    t.integer "pen_brand_id"
     t.string "model"
     t.string "description"
     t.text "note"
     t.boolean "favorite"
     t.integer "ink_id"
     t.integer "user_id"
+    t.index ["ink_id"], name: "index_pens_on_ink_id"
+    t.index ["pen_brand_id"], name: "index_pens_on_pen_brand_id"
+    t.index ["pen_type_id"], name: "index_pens_on_pen_type_id"
+    t.index ["user_id"], name: "index_pens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
