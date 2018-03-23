@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login/?' do
+    binding.pry
     @user = User.find_by(username: params[:login]) || User.find_by(email: params[:login])
 
     if @user && @user.authenticate(params[:password])
@@ -40,10 +41,6 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			User.find(session[:user_id])
 		end
-
-    def validate?
-      !self.any?{|obj| obj.emtpy?}
-    end
 	end
 
 end
