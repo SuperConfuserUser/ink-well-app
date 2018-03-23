@@ -16,10 +16,10 @@ pens
  - pen brand id
  - model
  - description (color and/or material)
- - comments
+ - note
  - user id
  - ink id
- - status
+ - favorite
  belongs to user
  belongs to pen brand
  belongs to pen type
@@ -37,8 +37,8 @@ pens
   - ink brand id
   - name
   - swatch
-  - comments
-  - status
+  - note
+  - favorite
   - user id
 belongs to user
 belongs to ink brand
