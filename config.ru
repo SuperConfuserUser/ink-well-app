@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+#might need Rack:Flash or Sinatra-flash
 
 run ApplicationController
 use InkControllersController
