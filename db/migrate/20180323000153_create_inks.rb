@@ -8,5 +8,10 @@ class CreateInks < ActiveRecord::Migration[5.1]
       t.boolean :favorite
       t.integer :user_id
     end
+
+    add_index :inks, :ink_brand_id
+    add_foreign_key :inks, :ink_brands
+    add_index :inks, :user_id
+    add_foreign_key :inks, :users
   end
 end
