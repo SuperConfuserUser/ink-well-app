@@ -7,3 +7,6 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use InkControllersController
+use PenControllersController
+use UserControllersController
