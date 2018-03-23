@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   post "/users/?" do
-    if !params[:user].values.any?(&:empty?)
-      @user = User.create(params[:user])
+    @user = User.new(params[:user])
+    if @user.save
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
     else
