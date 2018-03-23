@@ -18,19 +18,19 @@ class UsersController < ApplicationController
     end
   end
 
-  get "/users/:id/?" do
+  get "/users/:slug/?" do
     erb :"/users/show.html"
   end
 
-  get "/users/:id/edit/?" do
+  get "/users/:slug/edit/?" do
     erb :"/users/edit.html"
   end
 
-  patch "/users/:id/?" do
-    redirect "/users/:id"
+  patch "/users/:slug/?" do
+    redirect "/users/:slug"
   end
 
-  delete "/users/:id/delete/?" do
+  delete "/users/:slug/delete/?" do
     redirect "/users"
   end
 end
