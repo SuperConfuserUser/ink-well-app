@@ -7,6 +7,9 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use PensController
+use InksController
+use UsersController
 use InkControllersController
 use PenControllersController
 use UserControllersController
