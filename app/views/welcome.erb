@@ -1,9 +1,19 @@
 <h1>Ink Well</h1>
 
-<a href="/users">Users</a>
-<a href="/pens">Pens</a>
-<a href="/inks">Inks</a>
+<br><br>
+
+<form class="" action="/login" method="post">
+  <label for="username">Username / Email</label><br>
+  <input type="text" name="user[login]" value="">
+  <br><br>
+
+  <label for="password">Password</label><br>
+  <input type="password" name="user[password]" value="">
+  <br><br>
+
+  <input type="submit" name="submit" value="login">
+  <br><br>
+</form>
 
 
-<a href="/login">Login</a>
-<a href="/create">Create New Account</a>
+<a href="/users/new">Create New Account</a>
