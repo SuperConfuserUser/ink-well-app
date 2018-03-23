@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   post "/users/?" do
     if !params[:user].values.any?(&:empty?)
       @user = User.create(params[:user])
+      session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
     else
       redirect "/users/new"
