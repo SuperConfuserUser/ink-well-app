@@ -7,6 +7,7 @@ class CreateInks < ActiveRecord::Migration[5.1]
       t.text :note
       t.boolean :favorite
       t.integer :user_id
+      t.integer :pen_id
     end
   end
 end

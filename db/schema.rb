@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180323000336) do
     t.text "note"
     t.boolean "favorite"
     t.integer "user_id"
+    t.integer "pen_id"
   end
 
   create_table "pen_brands", force: :cascade do |t|
@@ -43,13 +44,12 @@ ActiveRecord::Schema.define(version: 20180323000336) do
   end
 
   create_table "pens", force: :cascade do |t|
-    t.integer "type_id"
-    t.integer "brand_id"
+    t.integer "pen_type_id"
+    t.integer "pen_brand_id"
     t.string "model"
     t.string "description"
     t.text "note"
     t.boolean "favorite"
-    t.integer "ink_id"
     t.integer "user_id"
   end
 
