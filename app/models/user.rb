@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email
   validates_uniqueness_of :username, presence: {message: "That username is taken :("}
   validates_uniqueness_of :email, presence: {message: "There is already an account with that email. Try logging in."}
+
+  include Slugifiable
 end
