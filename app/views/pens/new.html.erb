@@ -10,13 +10,12 @@
   <br><br>
 
   <label for="Type">Type</label><br>
-  <select name="pen[pen_type]">
+  <select name="pen[pen_type]" id="pen_select">
     <option value=""></option>
     <% PenType.all.each do |t| %>
       <option value="<%= t.name %>"><%= t.name.capitalize %></option>
     <% end %>
-  </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="new type">
-  <!-- makde add pen type hidden until the add button is pressed onclick event-->
+  </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
   <br><br>
 
   <label for="description">Descriptor</label>  <button type="button" id="show_suggestions">?</button> <span id="suggestions" class="hide">
@@ -25,25 +24,22 @@
   <input type="text" name="pen[description]">
   <br><br>
 
-  <input type="submit" name="submit" value="add">
+  <input type="submit" name="submit" id="submit" value="add">
 </form>
 
 <script type="text/javascript">
 
+  document.getElementById("add_new_pen_type").onclick = function(){
+    toggleHidden("pen_type")
 
-  document.getElementById("add_new_pen_type").onclick = function() {toggleHidden("pen_type")};
+    document.getElementById("pen_type").disabled = !!document.getElementById("pen_type").disabled;
+
+    document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
+  };
 
   document.getElementById("show_suggestions").onclick = function() {toggleHidden("suggestions")};
 
   function toggleHidden(name) {
     document.getElementById(name).classList.toggle("show");
-
 }
 </script>
-<!-- t.integer "pen_type_id"
-t.integer "pen_brand_id"
-t.string "model"
-t.string "description"
-t.text "note"
-t.boolean "favorite"
-t.integer "user_id" -->
