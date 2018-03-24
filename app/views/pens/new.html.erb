@@ -2,18 +2,18 @@
 
 <form class="" action="/pens" method="post">
   <label for="brand">Brand</label><br>
-  <input type="text" name="pen[pen_brand]" value="">
+  <input type="text" name="pen[pen_brand][name]">
   <br><br>
 
   <label for="model">Model</label><br>
-  <input type="text" name="pen[model]" value="">
+  <input type="text" name="pen[model][name]">
   <br><br>
 
   <label for="Type">Type</label><br>
   <select name="pen[pen_type]" id="pen_select">
-    <option value=""></option>
+    <option placeholder=""></option>
     <% PenType.all.each do |t| %>
-      <option value="<%= t.name %>"><%= t.name.capitalize %></option>
+      <option value="<%= t.id %>"><%= t.name.split.map(&:capitalize).join(' ') %></option>
     <% end %>
   </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
   <br><br>
