@@ -9,13 +9,16 @@ class UsersController < ApplicationController
     erb :"/users/new.html"
   end
 
+  get "/users/delete_warning/?" do
+    erb :"users/delete.html"
+  end
+
   get "/users/:slug/?" do
     @user = User.find_by_slug(params[:slug])
     erb :"/users/show.html"
   end
 
   get "/users/:slug/edit/?" do
-    @user = User.find_by_slug(params[:slug])
     erb :"/users/edit.html"
   end
 
@@ -23,17 +26,22 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/users/#{@user.slug}"
     else
       redirect "/users/new"
     end
   end
 
   patch "/users/:slug/?" do
-    redirect "/users/:slug"
+    @user = current_user
+    @user.update(params[:user])
+    redirect @user.save ? "/users/#{current_user.slug}" : "/users/#{current_user.slug}/edit"
   end
 
   delete "/users/:slug/delete/?" do
-    redirect "/users"
+    @user = current_user
+    session.clear
+    @user.delete
+    redirect "/"
   end
 end

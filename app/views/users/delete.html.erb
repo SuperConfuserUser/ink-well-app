@@ -1,0 +1,11 @@
+
+
+<h1>Warning!!!</h1>
+<p>Are you sure you want to delete your entire account?</p>
+
+<a href="/users/<%= current_user.slug %>">no</a><br><br>
+
+<form class="" action="/users/<%= current_user.slug %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="submit" value="yes">
+</form>

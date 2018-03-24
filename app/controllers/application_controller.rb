@@ -18,11 +18,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/logout/?' do
+    session.clear
     redirect '/login'
   end
 
   post '/login/?' do
-    binding.pry
     @user = User.find_by(username: params[:login]) || User.find_by(email: params[:login])
 
     if @user && @user.authenticate(params[:password])

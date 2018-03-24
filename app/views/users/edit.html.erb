@@ -1,12 +1,34 @@
 <h1>Edit Account</h1>
 
-<form class="" action="/users/1" method="post">
+<form class="" action="/users/<%= current_user.slug %>" method="post">
   <input type="hidden"  name="_method" value="patch">
 
+  <label for="username">Username</label><br>
+  <input type="text" name="user[username]" value="<%= current_user.username %>">
+  <br><br>
+
+  <label for="username">Email</label><br>
+  <input type="text" name="user[email]" value="<%= current_user.email %>">
+  <br><br>
+
+<!-- not sure if this will work... -->
+  <!-- <label for="password">Change Password</label><br>
+  <input type="text" name="user[password]">
+  <br><br> -->
+
+  <label for="description">About</label> <a href="#" alt="Use <br><br> to create a new line">?</a><br>  
+  <textarea name="user[description]" rows="6" cols="60"><%= current_user.description %></textarea>
+  <br><br>
+
+<!-- upload pic here -->
+  <label for="avatar_link">Add Link to Picture</label><br>
+  <input type="text" name="user[avatar_link]" value="<%= current_user.avatar_link %>">
+  <br><br>
+  
   <input type="submit" name="submit" value="edit">
 </form>
 
-<form class="" action="/users/:slug/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  
-</form>
+<br><br>
+<!-- add new warning page to verify -->
+<a href="/users/delete_warning">delete account</a>
+

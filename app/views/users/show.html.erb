@@ -1,12 +1,12 @@
 <h1><%= @user.username  %></h1>
 
-<% if @user.avatar_link %>
+<% if !@user.avatar_link.empty? %>
   <img src="/public/images/avatars/<%= @user.slug %>.jpg" alt="<%= @user.username %> avatar">
 <% else %>
   <!-- <img src="/public/images/avatars/default.jpg" alt="<%= @user.username %> avatar"> -->
 <% end %>
 
-<h3><%= 'Pens' %> (<%= @user.pens.count %>)</h3>
-<h3><%= 'Inks' %> (<%= @user.inks.count %>)</h3>
-
+<h3><%= 'Pens' %> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+<h3><%= 'Inks' %> (<%= @user.inks.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+<br>
 <p><%= @user.description %> </p>
