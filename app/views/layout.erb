@@ -21,11 +21,14 @@
       <a href="/users">Users</a>
       <a href="/pens">Pens</a>
       <a href="/inks">Inks</a>
-      <a href="/logout">Logout</a>
+      <% if logged_in? %>
+        <a href="/users/<%= current_user.slug %>/edit">Settings</a>
+        <a href="/logout">Logout</a>
+      <% end %>
     </nav>
-    <br>
-      <%= yield %>
-
+    
+    <%= yield %>
+    
     <footer class="branding">
       <small>&copy; 2018 <strong>InkWellApp</strong></small>
     </footer>

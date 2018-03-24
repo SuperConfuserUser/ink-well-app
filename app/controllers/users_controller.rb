@@ -9,6 +9,16 @@ class UsersController < ApplicationController
     erb :"/users/new.html"
   end
 
+  get "/users/:slug/?" do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/users/show.html"
+  end
+
+  get "/users/:slug/edit/?" do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/users/edit.html"
+  end
+
   post "/users/?" do
     @user = User.new(params[:user])
     if @user.save
@@ -17,14 +27,6 @@ class UsersController < ApplicationController
     else
       redirect "/users/new"
     end
-  end
-
-  get "/users/:slug/?" do
-    erb :"/users/show.html"
-  end
-
-  get "/users/:slug/edit/?" do
-    erb :"/users/edit.html"
   end
 
   patch "/users/:slug/?" do

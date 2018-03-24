@@ -4,11 +4,7 @@ module Slugifiable
   end
 
   def slug
-    slug = self.username.downcase.gsub(' ', '-').gsub(/[^\w-]/, '')
-  end
-
-  def name_slug
-    slug = self.name.downcase.gsub(' ', '-').gsub(/[^\w-]/, '')
+    slug = self.username.downcase.gsub(' ', '-').gsub(/[^\w-]/, '') if self.username
   end
 
   module ClassMethods
