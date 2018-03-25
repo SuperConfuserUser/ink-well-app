@@ -4,5 +4,5 @@ class Pen < ActiveRecord::Base
   belongs_to :pen_type
   has_one :ink
 
-  # validates_presence_of :pen_type, :pen_brand, :model
+  validates_presence_of :pen_type, :pen_brand, :model
 end

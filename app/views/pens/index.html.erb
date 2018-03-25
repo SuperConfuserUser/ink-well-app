@@ -1,1 +1,7 @@
 <h1>Pens</h1>
+
+<ul>
+  <% @pens.each do |p| %>
+    <li><a href="/pens/<%= p.id %>"><%= p.pen_brand.name %> <%= p.model %> <%= '- p.description' if p.description %></li>
+  <% end %>
+</ul>

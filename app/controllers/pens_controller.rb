@@ -1,6 +1,7 @@
 class PensController < ApplicationController
 
   get "/pens/?" do
+    @pens = Pen.all
     erb :"/pens/index.html"
   end
 
