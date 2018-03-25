@@ -1,6 +1,32 @@
-<h1>Pen</h1>
+<h1>Pen Details</h1>
 
-<form class="" action="/pens/:id/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="submit" value="delete">
-</form>
+<h3>Type: <%= @pen.pen_type.name %></h3>
+<h3>Brand: <%= @pen.pen_brand.name %></h3>
+<h3>Model: <%= @pen.model %></h3>
+
+<% if @pen.description.present? %>
+  <p>Description: <%= @pen.description %></p>
+<% end %>
+
+<% if @pen.note.present? %>
+  <p>Note: <br>
+    <%= @pen.note %></p>
+<% end %>
+
+<% if @pen.user == current_user %>
+  <br><br>
+  <a href="/pens/<%= @pen.id %>/edit">edit</a>
+
+  <form class="" action="/pens/:id/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="submit" value="delete">
+  </form>
+<% end %>
+
+<!-- t.integer "pen_type_id"
+t.integer "pen_brand_id"
+t.string "model"
+t.string "description"
+t.text "note"
+t.boolean "favorite"
+t.integer "user_id" -->

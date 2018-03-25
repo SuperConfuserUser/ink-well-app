@@ -25,18 +25,22 @@ class PensController < ApplicationController
   end
 
   get "/pens/:id/?" do
+    @pen = Pen.find(params[:id])
     erb :"/pens/show.html"
   end
 
   get "/pens/:id/edit/?" do
+    @pen = Pen.find(params[:id])
     erb :"/pens/edit.html"
   end
 
   patch "/pens/:id/?" do
-    redirect "/pens/:id"
+    @pen = Pen.find(params[:id])
+    redirect "/pens/#{@pen.id}"
   end
 
   delete "/pens/:id/delete/?" do
+    @pen = Pen.find(params[:id])
     redirect "/pens"
   end
 end
