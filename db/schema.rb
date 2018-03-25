@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20180323000336) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "description"
+    t.string "name"
+    t.string "tagline"
+    t.text "about"
     t.string "avatar_link"
   end
 
