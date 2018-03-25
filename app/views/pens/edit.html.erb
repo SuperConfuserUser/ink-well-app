@@ -1,6 +1,63 @@
-<h1>Edit Pen</h1>
+
 
 <form class="" action="/pens/:id" method="post">
   <input type="hidden" name="_method" value="patch">
-  <input type="submit" name="submit" value="edit">
+
+<!-- add heart checkbox -->
+  <h1>Edit Pen - <input type="checkbox" name="pen[favorite]" value="true"> favorite</input></h1>
+
+  <label for="brand">Brand</label><br>
+  <input type="text" name="brand" value="<%= @pen.pen_brand.name %>">
+  <br><br>
+
+  <label for="pen[model]">Model</label><br>
+  <input type="text" name="pen[model]" value="<%= @pen.model %>">
+  <br><br>
+
+  <label for="Type">Type</label><br>
+  <select name="type" id="pen_select">
+    <option placeholder=""></option>
+    <% PenType.all.each do |t| %>
+      <option value="<%= t.id %>" <%= 'selected' if t.id == @pen.pen_type_id %>><%= t.name.split.map(&:capitalize).join(' ') %></option>
+    <% end %>
+  </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
+  <br><br>
+
+  <label for="pen[description]">Description (not required)</label>  <button type="button" id="show_suggestions">?</button> <span id="suggestions" class="hide">color, material, and so forth</span><br>
+  <input type="text" name="pen[description]" value="<%= @pen.description %>">
+  <br><br>
+
+  <label for="pen[note]">Note</label>  <button type="button" id="show_note">?</button> <span id="note" class="hide">stories, condition, repairs, cost, and so on</span><br>
+  <textarea name="pen[note]" rows="5" cols="75"><%= @pen.note %></textarea>
+
+  <br><br>
+  <input type="submit" name="submit" id="submit" value="edit">
 </form>
+
+<!-- t.integer "pen_type_id"
+t.integer "pen_brand_id"
+t.string "model"
+t.string "description"
+t.text "note"
+t.boolean "favorite"
+t.integer "user_id" -->
+
+<script type="text/javascript">
+
+document.getElementById("add_new_pen_type").onclick = function(){
+  toggleHidden("pen_type")
+
+  document.getElementById("pen_type").disabled = !!document.getElementById("pen_type").disabled;
+
+  document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
+};
+
+document.getElementById("show_suggestions").onclick = function() {toggleHidden("suggestions")};
+
+document.getElementById("show_note").onclick = function(){
+  toggleHidden("note")};
+
+function toggleHidden(name) {
+  document.getElementById(name).classList.toggle("show");
+}
+</script>

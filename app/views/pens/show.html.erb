@@ -15,7 +15,7 @@
 
 <% if @pen.user == current_user %>
   <br><br>
-  <a href="/pens/<%= @pen.id %>/edit">edit</a>
+  <a href="/pens/<%= @pen.id %>/edit">Add Information</a>
 
   <form class="" action="/pens/:id/delete" method="post">
     <input type="hidden" name="_method" value="delete">
