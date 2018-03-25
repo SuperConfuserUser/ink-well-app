@@ -1,20 +1,26 @@
 <h1><%= @user.username  %></h1>
 
-<% if @user.avatar_link && !@user.avatar_link.empty? %>
+<% if @user.avatar_link.present? %>
   <img src="/public/images/avatars/<%= @user.slug %>.jpg" alt="<%= @user.username %> avatar">
 <% else %>
   <!-- <img src="/public/images/avatars/default.jpg" alt="<%= @user.username %> avatar"> -->
 <% end %>
 
-<% if @user.name && !@user.name.empty? %>
+<% if @user.name.present? %>
   <p><%= @user.name %></p>
 <% end %>
 
-<% if @user.tagline && !@user.tagline.empty? %>
+<% if @user.tagline.present?%>
   <p><%= @user.tagline %></p>
 <% end %>
+
+<p><a href="mailto:<%= @user.email %>" target="_top"><%= @user.email %></a></p>
 
 <h3><%= 'Pens' %> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
 <h3><%= 'Inks' %> (<%= @user.inks.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
 <br>
 <p><%= @user.about %> </p>
+
+<% if @user == current_user %>
+  <a href="/users/#{@user.slug}/edit">edit profile</a>
+<% end %>

@@ -28,7 +28,7 @@ color_families = [
   "other"
 ]
 
-color_families.each {|c| PenType.create(name: c)}
+color_families.each {|c| ColorFamily.create(name: c)}
 
 
 User.create!(username: 'foo',
