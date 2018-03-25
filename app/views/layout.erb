@@ -24,6 +24,8 @@
       <% if logged_in? %>
         <a href="/users/<%= current_user.slug %>/edit">Settings</a>
         <a href="/logout">Logout</a>
+      <% else %>
+        <a href="/login">Login</a>
       <% end %>
     </nav>
 
