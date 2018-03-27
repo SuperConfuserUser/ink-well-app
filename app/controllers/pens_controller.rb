@@ -54,6 +54,11 @@ class PensController < ApplicationController
 
   delete "/pens/:id/delete/?" do
     @pen = Pen.find(params[:id])
+
+    redirect "/pens" if !@pen
+    redirect "/pens/#{@pen.id}" if @pen.user != current_user
+
+    @pen.delete
     redirect "/pens"
   end
 end
