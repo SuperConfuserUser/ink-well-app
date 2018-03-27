@@ -13,7 +13,7 @@
   <select name="type" id="pen_select">
     <option placeholder=""></option>
     <% PenType.all.each do |t| %>
-      <option value="<%= t.id %>"><%= t.name.split.map(&:capitalize).join(' ') %></option>
+      <option value="<%= t.id %>"><%= t.name %></option>
     <% end %>
   </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
   <br><br>

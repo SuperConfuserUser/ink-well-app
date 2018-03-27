@@ -1,10 +1,10 @@
 pen_types = [
-  "fountain",
-  "gel",
-  "rollerball",
-  "ballpoint",
-  "felt tip",
-  "brush"]
+  "Fountain",
+  "Gel",
+  "Rollerball",
+  "Ballpoint",
+  "Felt Tip",
+  "Brush"]
 
 pen_types.each {|t| PenType.create(name: t)}
 

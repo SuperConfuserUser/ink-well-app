@@ -1,4 +1,4 @@
-<h1>Pens</h1>
+<h1>Pens <% if logged_in? %><a href="/pens/new">+</a><% end %></h1>
 
 <ul>
   <% @pens.each do |p| %>
