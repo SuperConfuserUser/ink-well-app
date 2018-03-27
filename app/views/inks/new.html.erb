@@ -1,6 +1,43 @@
-<h1>Add Ink</h1>
+<!-- t.integer "ink_brand_id"
+t.string "name"
+t.string "swatch"
+t.text "note"
+t.boolean "favorite"
+t.integer "user_id"
+t.integer "pen_id" -->
+
+
 
 <form class="" action="/inks" method="post">
+  <h1>New Ink
+    <input id='fav' type='checkbox' name="ink[favorite]" value="true">
+    <label for='fav'>
+        <span class="heart-off"></span>
+        <span class="heart"></span>
+    </label>
+  </h1>
+
+  <label for="brand">Brand</label><br>
+  <input type="text" name="brand">
+  <br><br>
+
+  <label for="ink[name]">Name</label><br>
+  <input type="text" name="ink[name]">
+  <br><br>
+
+  <label for="ink[Swatch]">Color</label><br>
+  <input type="color" name="ink[Swatch]">
+  <br><br>
+
+  <label for="color_families">Color Type(s)</label><br>
+  <% ColorFamily.all.each do |c| %>
+      <input type="checkbox" name="ink[color_families][]" value="<%= c.id %>"><%= c.name.capitalize %></input><br>
+  <% end %>
+  <br><br>
+
+  <label for="ink[note]">Note</label>  <button type="button" id="show_note">?</button> <span id="note" class="hide">stories, condition, repairs, cost, and so on</span><br>
+  <textarea name="ink[note]" rows="5" cols="75"></textarea>
+  <br><br>
 
   <input type="submit" name="submit" value="add">
 </form>
