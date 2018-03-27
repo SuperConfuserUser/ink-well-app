@@ -17,7 +17,7 @@ color_families = [
   "orange",
   "yellow",
   "green",
-  "purple",
+  "violet",
   "pink",
   "gray",
   "brown",
