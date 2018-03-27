@@ -45,6 +45,7 @@ class PensController < ApplicationController
     redirect "/pens/#{@pen.id}/edit" if !valid
 
     @pen.update(params[:pen])
+    @pen.favorite = params[:pen][:favorite]
     @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand])
     @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
 

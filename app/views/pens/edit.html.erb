@@ -4,7 +4,22 @@
   <input type="hidden" name="_method" value="patch">
 
 <!-- add heart checkbox -->
-  <h1>Edit Pen - <input type="checkbox" name="pen[favorite]" value="true"> favorite</input></h1>
+  <h1>Edit Pen 
+    <input id='fav' type='checkbox' name="pen[favorite]" value="true" <%= 'checked' if @pen.favorite %>>
+      <label for='fav'>
+          <span class="heart-off"></span>
+          <span class="heart"></span>
+      </label>
+  </h1>
+
+
+
+<!-- <input type="checkbox" name="pen[favorite]" value="true" <%= 'checked' if @pen.favorite %> class="heart-checkbox"> favorite</input><br><br> -->
+
+
+   
+
+  
 
   <label for="brand">Brand</label><br>
   <input type="text" name="brand" value="<%= @pen.pen_brand.name %>">

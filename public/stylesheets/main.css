@@ -1,7 +1,46 @@
+/* toggle hide */
 .hide {display: none;}
 
 .show {display: inline;}
 .showBlock {display: block;}
+
+/* fav heart button */
+#fav {
+  display: none
+}
+
+#fav+label {
+  padding: 3px 3px;
+  cursor: pointer
+}
+
+.heart-off::after {
+  content: "\2661";
+}
+
+.heart::after {
+  content: "\2665";
+  color: #F06586;
+}
+
+#fav+label>.heart-off {
+  display: inline-block
+}
+
+
+#fav+label>.heart {
+  display: none;
+}
+
+#fav:checked+label>.heart-off {
+  display: none;
+}
+
+#fav:checked+label>.heart {
+  display: inline-block
+}
+
+
 
 @media screen {
   /* --- Reset Styles --- */
