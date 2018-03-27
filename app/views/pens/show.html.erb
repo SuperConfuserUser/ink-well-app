@@ -1,21 +1,20 @@
-<h1>Pen Details</h1>
+<h1><%= @pen.pen_brand.name %> - <%= @pen.model %> <%= 'heart' if @pen.user == current_user && @pen.favorite %></h1>
 
 <h3>Type: <%= @pen.pen_type.name %></h3>
-<h3>Brand: <%= @pen.pen_brand.name %></h3>
-<h3>Model: <%= @pen.model %></h3>
 
 <% if @pen.description.present? %>
-  <p>Description: <%= @pen.description %></p>
+  <h3>Description: <%= @pen.description %></h3>
 <% end %>
 
 <% if @pen.note.present? %>
-  <p>Note: <br>
-    <%= @pen.note %></p>
+  <h3>Note:</h3>
+    <p><%= @pen.note %></p>
 <% end %>
 
 <% if @pen.user == current_user %>
   <br><br>
   <a href="/pens/<%= @pen.id %>/edit">Add Information</a>
+  <br><br>
 
   <form class="" action="/pens/:id/delete" method="post">
     <input type="hidden" name="_method" value="delete">
