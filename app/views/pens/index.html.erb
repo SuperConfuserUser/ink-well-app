@@ -2,6 +2,7 @@
 
 <ul>
   <% @pens.each do |p| %>
-    <li><a href="/pens/<%= p.id %>"><%= p.pen_brand.name %> <%= p.model %> <%= '- p.description' if p.description %></li>
+    <li><a href="/pens/<%= p.id %>"><%= p.pen_brand.name %> <%= p.model %>
+       <% if p.description.present? %> - <%= p.description %></h3><% end %></li>
   <% end %>
 </ul>
