@@ -18,7 +18,7 @@ class PensController < ApplicationController
 
     @pen = Pen.new(params[:pen])
     @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand])
-    @pen.pen_type = (PenType.find(params[:type].to_i) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+    @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
     @pen.user = current_user if current_user
 
     redirect @pen.save ? "/pens/#{@pen.id}" : "/pens/new"
@@ -36,7 +36,19 @@ class PensController < ApplicationController
 
   patch "/pens/:id/?" do
     @pen = Pen.find(params[:id])
-    redirect "/pens/#{@pen.id}"
+    redirect "/pens" if !@pen
+
+    type = params[:type] || params[:pen_type][:name]
+
+    valid = @pen.user == current_user && ![type, params[:brand], params[:pen][:model]].any?(&:empty?)
+
+    redirect "/pens/#{@pen.id}/edit" if !valid
+
+    @pen.update(params[:pen])
+    @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand])
+    @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+
+    redirect @pen.save ? "/pens/#{@pen.id}" : "/pens/#{@pen.id}/edit"
   end
 
   delete "/pens/:id/delete/?" do
