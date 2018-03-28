@@ -9,17 +9,14 @@ class InksController < ApplicationController
   end
 
   post "/inks/?" do
-    valid = ![params[:brand], params[:ink][:name]].any?(&:empty?)
+    valid = ![params[:brand], params[:ink][:name]].any?(&:empty?) && logged_in?
 
     redirect "/inks/new" if !valid
-
-    @ink.user = current_user if current_user
 
     @ink = Ink.new(params[:ink])
     @ink.ink_brand = InkBrand.find_or_create_by(name: params[:brand])
     @ink.color_family_ids = params[:color_families]
     @ink.user = current_user if current_user
-    binding.pry
 
     redirect @ink.save ? "/inks/#{@ink.id}" : "/inks/new"
   end
