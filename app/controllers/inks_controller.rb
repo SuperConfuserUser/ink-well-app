@@ -9,17 +9,17 @@ class InksController < ApplicationController
   end
 
   post "/inks/?" do
-    binding.pry
-    type = params[:type] || params[:pen_type][:name]
+    valid = ![params[:brand], params[:ink][:name]].any?(&:empty?)
 
-    valid = ![type, params[:brand], params[:pen][:model]].any?(&:empty?)
+    redirect "/inks/new" if !valid
 
-    redirect "/pens/new" if !valid
+    @ink.user = current_user if current_user
 
     @ink = Ink.new(params[:ink])
     @ink.ink_brand = InkBrand.find_or_create_by(name: params[:brand])
-    @ink.ink_type = (InkType.find(params[:type]) if params[:type]) || InkType.find_or_create_by(params[:ink_type])
+    @ink.color_family_ids = params[:color_families]
     @ink.user = current_user if current_user
+    binding.pry
 
     redirect @ink.save ? "/inks/#{@ink.id}" : "/inks/new"
   end

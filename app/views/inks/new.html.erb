@@ -25,8 +25,8 @@ t.integer "pen_id" -->
   <input type="text" name="ink[name]">
   <br><br>
 
-  <label for="ink[Swatch]">Color</label><br>
-  <input type="color" name="ink[Swatch]">
+  <label for="ink[swatch]">Color</label><br>
+  <input type="color" name="ink[swatch]">
   <br><br>
 
   <!-- <label for="color_families" class="color_fam">Color Type(s)</label><br>
@@ -39,7 +39,7 @@ t.integer "pen_id" -->
 
   <% ColorFamily.all.each do |cf| %>
     <label class="color_fam"><%= cf.name.capitalize %>
-      <input type="checkbox">
+      <input type="checkbox" name="color_families[]" value="<%= cf.id %>">
         <span class="checkmark <%= cf.name %>"></span>
     </label>
   <% end %>
