@@ -1,6 +1,28 @@
-<h1>Ink Name</h1>
+<h1><%= @ink.ink_brand.name %> - <%= @ink.name %>
+  <%= '<span class="heart"></span>' if @ink.user == current_user && @ink.favorite %></h1>
 
-<form class="" action="/inks/:id/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="submit" value="delete">
-</form>
+  <% if @ink.swatch %>
+      <div class="swatch-big" style="background: <%= @ink.swatch %>"></div>
+  <% end %>
+
+<% if @ink.color_families %>
+  <h3>Color Type(s):
+    <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
+  </h3>
+<% end %>
+
+<% if @ink.note.present? %>
+  <h3>Note:</h3>
+    <p><%= @ink.note %></p>
+<% end %>
+
+<% if @ink.user == current_user %>
+  <br><br>
+  <a href="/inks/<%= @ink.id %>/edit">edit</a>
+  <br><br>
+
+  <form class="" action="/inks/<%= @ink.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="submit" value="delete">
+  </form>
+<% end %>

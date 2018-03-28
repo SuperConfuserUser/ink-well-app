@@ -22,6 +22,7 @@ class InksController < ApplicationController
   end
 
   get "/inks/:id/?" do
+    @ink = Ink.find(params[:id])
     erb :"/inks/show.html"
   end
 

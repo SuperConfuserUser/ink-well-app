@@ -1,13 +1,3 @@
-<!-- t.integer "ink_brand_id"
-t.string "name"
-t.string "swatch"
-t.text "note"
-t.boolean "favorite"
-t.integer "user_id"
-t.integer "pen_id" -->
-
-
-
 <form class="" action="/inks" method="post">
   <h1>New Ink
     <input id='fav' type='checkbox' name="ink[favorite]" value="true">
@@ -28,14 +18,6 @@ t.integer "pen_id" -->
   <label for="ink[swatch]">Color</label><br>
   <input type="color" name="ink[swatch]">
   <br><br>
-
-  <!-- <label for="color_families" class="color_fam">Color Type(s)</label><br>
-  <% ColorFamily.all.each do |c| %>
-    <label class="color_fam"><%= c.name.capitalize %>
-    <input type="checkbox" name="ink[color_families][]" value="<%= c.id %>>
-    <span class="checkmark <%= c.name %>"></span>
-    </label>
-  <% end %> -->
 
   <% ColorFamily.all.each do |cf| %>
     <label class="color_fam"><%= cf.name.capitalize %>
