@@ -1,6 +1,7 @@
 class InksController < ApplicationController
 
   get "/inks/?" do
+    @inks = Ink.all
     erb :"/inks/index.html"
   end
 

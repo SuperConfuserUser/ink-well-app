@@ -1,1 +1,10 @@
-<h1>Inks</h1>
+<h1>Inks <% if logged_in? %><a href="/inks/new">+</a><% end %></h1>
+
+<ul>
+  <% @inks.each do |i| %>
+    <li>
+
+      <a href="/inks/<%= i.id %>"><%= i.ink_brand.name %> <%= i.name %></a><div class="swatch-medium" style="background: <%= i.swatch if i.swatch %>"></div>
+    </li>
+  <% end %>
+</ul>
