@@ -40,6 +40,12 @@
   <input type="submit" name="submit" id="submit" value="edit">
 </form>
 
+<br>
+<form class="" action="/pens/<%= @pen.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="submit" value="delete">
+</form>
+
 <script type="text/javascript">
 
 document.getElementById("add_new_pen_type").onclick = function(){
