@@ -22,10 +22,10 @@
 /* Create a custom checkbox */
 .checkmark {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    height: 18px;
-    width: 18px;
+    top: 2px;
+    left: 3px;
+    height: 15px;
+    width: 15px;
     border-radius: 50%;
     border: 2px solid #ccc;
     background-color: transparent;
@@ -33,11 +33,11 @@
 
 /* On mouse-over and checked, resize and remove border */
 .color_fam:hover input ~ .checkmark, .color_fam input:checked ~ .checkmark {
-    top: 0;
-    left: 0;
+    top: 1px;
+    left: 1px;
     border: none;
-    height: 25px;
-    width: 25px;
+    height: 23px;
+    width: 23px;
 }
 
 /* Custom bgs for each color family */
@@ -99,7 +99,7 @@
 }
 
 .color_fam:hover input ~ .metallic, .color_fam input:checked ~ .metallic {
-	background-image: url("/images/color_family/Metallic.jpg");
+	background-image: url("/images/color_family/metallic.jpg");
   background-repeat: no-repeat;
 }
 
@@ -122,8 +122,8 @@
 
 /* Style the checkmark/indicator */
 .color_fam .checkmark:after {
-    left: 9px;
-    top: 5px;
+    left: 8px;
+    top: 4px;
     width: 5px;
     height: 10px;
     border: solid white;
