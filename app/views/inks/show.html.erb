@@ -6,7 +6,7 @@
   <% end %>
 
 <% if @ink.color_families %>
-  <h3>Color Type(s):
+  <h3>Color Type<%= 's' if @ink.color_families.length > 1 %>:
     <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
   </h3>
 <% end %>
@@ -20,9 +20,4 @@
   <br><br>
   <a href="/inks/<%= @ink.id %>/edit">edit</a>
   <br><br>
-
-  <form class="" action="/inks/<%= @ink.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" name="submit" value="delete">
-  </form>
 <% end %>

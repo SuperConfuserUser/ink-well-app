@@ -1,7 +1,43 @@
-<h1>Edit Ink</h1>
-
-<form class="" action="/inks/:id" method="post">
+<form class="" action="/inks/<%= @ink.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
 
+  <h1>Edit Ink
+    <input id='fav' type='checkbox' name="ink[favorite]" value="true" <%= 'checked' if @ink.favorite %>>
+    <label for='fav'>
+        <span class="heart-off"></span>
+        <span class="heart"></span>
+    </label>
+  </h1>
+
+  <label for="brand">Brand</label><br>
+  <input type="text" name="brand" value="<%= @ink.ink_brand.name %>">
+  <br><br>
+
+  <label for="ink[name]">Name</label><br>
+  <input type="text" name="ink[name]" value="<%= @ink.name %>">
+  <br><br>
+
+  <label for="ink[swatch]">Color</label><br>
+  <input type="color" name="ink[swatch]" value="<%= @ink.swatch %>">
+  <br><br>
+
+  <% ColorFamily.all.each do |cf| %>
+    <label class="color_fam"><%= cf.name.capitalize %>
+      <input type="checkbox" name="color_families[]" value="<%= cf.id %>" <%= 'checked' if @ink.color_family_ids.include? cf.id %>>
+        <span class="checkmark <%= cf.name %>"></span>
+    </label>
+  <% end %>
+  <br><br>
+
+  <label for="ink[note]">Note</label>  <button type="button" id="show_note">?</button> <span id="note" class="hide">stories, condition, repairs, cost, and so on</span><br>
+  <textarea name="ink[note]" rows="5" cols="75"><%= @ink.note %></textarea>
+  <br><br>
+
   <input type="submit" name="submit" value="edit">
+</form>
+
+<br>
+<form class="" action="/inks/<%= @ink.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="submit" value="delete">
 </form>
