@@ -46,6 +46,8 @@ class UsersController < ApplicationController
     redirect "/users/delete_warning" if !@user.authenticate(params[:password])
 
     session.clear
+    @user.pens.each(&:delete)
+    @user.inks.each(&:delete)
     @user.delete
     redirect "/"
   end

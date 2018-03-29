@@ -7,7 +7,7 @@
 
 <% if @ink.color_families %>
   <h3>Color Type<%= 's' if @ink.color_families.length > 1 %>:
-    <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
+    <%= @ink.color_families.pluck(:name).map(&:capitalize.join(", ") %>
   </h3>
 <% end %>
 

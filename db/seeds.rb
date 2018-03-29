@@ -1,10 +1,10 @@
 pen_types = [
-  "Fountain",
-  "Gel",
-  "Rollerball",
-  "Ballpoint",
-  "Felt Tip",
-  "Brush"]
+  "fountain",
+  "gel",
+  "rollerball",
+  "ballpoint",
+  "felt tip",
+  "brush"]
 
 pen_types.each {|t| PenType.create(name: t)}
 
@@ -31,7 +31,7 @@ color_families = [
 color_families.each {|c| ColorFamily.create(name: c)}
 
 
-User.create!(username: 'foo',
+User.create!(username: 'foobar',
              email: 'foo@bar.com',
              password_digest: BCrypt::Password.create('password'))
 
@@ -44,4 +44,5 @@ User.create!(username: 'TheBard',
              email: 'thebard@theatre.com',
              name: 'William Shakespeare',
              tagline: 'The pen is mightier than the sword.',
+             avatar_link: 'thebard',
              password_digest: BCrypt::Password.create('password'))
