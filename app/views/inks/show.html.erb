@@ -20,4 +20,9 @@
   <br><br>
   <a href="/inks/<%= @ink.id %>/edit">edit</a>
   <br><br>
+
+  <form class="" action="/inks/<%= @ink.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="submit" value="delete">
+  </form>
 <% end %>

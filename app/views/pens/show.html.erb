@@ -1,7 +1,7 @@
 <h1><%= @pen.pen_brand.name %> - <%= @pen.model %>
   <%= '<span class="heart"></span>' if @pen.user == current_user && @pen.favorite %></h1>
 
-<h3>Type: <%= @pen.pen_type.name %></h3>
+<h3>Type: <%= @pen.pen_type.name.split.map(&:capitalize).join(' ') %></h3>
 
 <% if @pen.description.present? %>
   <h3>Description: <%= @pen.description %></h3>
@@ -16,6 +16,11 @@
   <br><br>
   <a href="/pens/<%= @pen.id %>/edit">edit</a>
   <br><br>
+
+  <form class="" action="/pens/<%= @pen.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="submit" value="delete">
+  </form>
 <% end %>
 
 <!-- t.integer "pen_type_id"
