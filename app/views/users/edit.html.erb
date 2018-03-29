@@ -4,11 +4,11 @@
   <input type="hidden"  name="_method" value="patch">
 
   <label for="username">Username</label><br>
-  <input type="text" name="user[username]" value="<%= current_user.username %>">
+  <input type="text" name="user[username]" value="<%= current_user.username %>" required>
   <br><br>
 
   <label for="username">Email</label><br>
-  <input type="text" name="user[email]" value="<%= current_user.email %>">
+  <input type="email" name="user[email]" value="<%= current_user.email %>" required>
   <br><br>
 
 <!-- not sure if this will work... -->
@@ -16,19 +16,27 @@
   <input type="text" name="user[password]">
   <br><br> -->
 
-  <label for="description">About</label> <a href="#" alt="Use <br><br> to create a new line">?</a><br>  
-  <textarea name="user[description]" rows="6" cols="60"><%= current_user.description %></textarea>
+  <label for="tagline">Tagline</label><br>
+  <textarea name="user[tagline]" rows="1" cols="60"><%= current_user.tagline %></textarea>
+  <br><br>
+
+  <label for="description">About</label> <label for="show-hint"><span class="small-button">?</span></label>
+    <input type="checkbox" id="show-hint">
+    <span id="hint">Use <em>&lt;br&gt;&lt;br&gt; </em> to create paragraphs.</span><br>
+  <textarea name="user[about]" rows="6" cols="60"><%= current_user.about %></textarea>
   <br><br>
 
 <!-- upload pic here -->
-  <label for="avatar_link">Add Link to Picture</label><br>
+  <!-- <label for="avatar_link">Add Link to Picture</label><br>
   <input type="text" name="user[avatar_link]" value="<%= current_user.avatar_link %>">
-  <br><br>
-  
+  <br><br> -->
+
   <input type="submit" name="submit" value="edit">
+  <br><br>
+
+  <input type="Reset" name="reset" value="reset">
 </form>
 
 <br><br>
 <!-- add new warning page to verify -->
 <a href="/users/delete_warning">delete account</a>
-

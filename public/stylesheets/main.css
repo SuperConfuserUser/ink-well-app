@@ -76,15 +76,15 @@ input[type="color"]::-webkit-color-swatch {
 
 
 /* show ink hints */
-input#show-ink-hint {
+input#show-hint {
   display:none;
 }
 
-span#ink-hint {
+span#hint {
   display:none;
 }
 
-input#show-ink-hint:checked ~ span#ink-hint, input#show-ink-hint:hover ~ span#ink-hint {
+input#show-hint:checked ~ span#hint, input#show-hint:hover ~ span#hint {
   display:inline;
 }
 
