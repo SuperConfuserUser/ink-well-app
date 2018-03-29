@@ -49,6 +49,8 @@ class InksController < ApplicationController
   end
 
   delete "/inks/:id/delete/?" do
+    @ink = Ink.find(params[:id])
+    @ink.delete
     redirect "/inks"
   end
 end
