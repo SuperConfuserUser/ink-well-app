@@ -1,3 +1,31 @@
+/* button styles*/
+input[type=color] {
+  -webkit-appearance: none;
+  border: 1px solid rgba(0, 0, 0, .2);
+  height: 100px;
+  width: 100px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
+/* small button */
+.small-button {
+  background-color: rgba(0, 0, 0, .2);
+  border: none;
+  padding: 2px 5px;
+}
+
+.small-button:hover, .small-button:focus, .small-button:active, .small-button:checked {
+  background-color: #444;
+  color: white;
+}
+
+
 /* swatch display */
 .swatch-big {
   width: 100%;
@@ -38,11 +66,11 @@
   display: none;
 }
 
-#fav:checked+label>.heart-off, #fav:hover+label>.heart-off {
+#fav:checked+label>.heart-off {
   display: none;
 }
 
-#fav:checked+label>.heart, #fav:hover+label>.heart {
+#fav:checked+label>.heart {
   display: inline-block
 }
 
