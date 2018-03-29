@@ -2,9 +2,11 @@
 
 <ul>
   <% @inks.each do |i| %>
-    <li>
-
-      <a href="/inks/<%= i.id %>"><%= i.ink_brand.name %> <%= i.name %></a><div class="swatch-medium" style="background: <%= i.swatch if i.swatch %>"></div>
+    <li class="ink">
+      <a href="/inks/<%= i.id %>">
+         <div class="ink-name"><%= i.ink_brand.name %> <%= i.name %></div>
+         <div class="ink-swatch" style="background: <%= i.swatch if i.swatch %>"></div>
+      </a>
     </li>
   <% end %>
 </ul>
