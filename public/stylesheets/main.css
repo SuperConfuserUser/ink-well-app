@@ -38,12 +38,26 @@
   display: none;
 }
 
-#fav:checked+label>.heart-off {
+#fav:checked+label>.heart-off, #fav:hover+label>.heart-off {
   display: none;
 }
 
-#fav:checked+label>.heart {
+#fav:checked+label>.heart, #fav:hover+label>.heart {
   display: inline-block
+}
+
+
+/* show ink hints */
+input#show-ink-hint {
+  display:none;
+}
+
+span#ink-hint {
+  display:none;
+}
+
+input#show-ink-hint:checked ~ span#ink-hint, input#show-ink-hint:hover ~ span#ink-hint {
+  display:inline;
 }
 
 /* ink list */

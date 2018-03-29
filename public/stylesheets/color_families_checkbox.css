@@ -1,9 +1,9 @@
-/* The color_fam */
-.color_fam {
+/* The color-fam */
+.color-fam {
     display: inline-block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-top: 12px;
     cursor: pointer;
     width: 100px;
     -webkit-user-select: none;
@@ -13,97 +13,102 @@
 }
 
 /* Hide the browser's default checkbox */
-.color_fam input {
+.color-fam input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 
+.color-fam label {
+    top: 50%;
+}
+
 /* Create a custom checkbox */
 .checkmark {
     position: absolute;
-    top: 2px;
+    /*top: 1px;*/
     left: 3px;
     height: 15px;
     width: 15px;
     border-radius: 50%;
     border: 2px solid #ccc;
     background-color: transparent;
+    transition: all .3s linear;
 }
 
 /* On mouse-over and checked, resize and remove border */
-.color_fam:hover input ~ .checkmark, .color_fam input:checked ~ .checkmark {
-    top: 1px;
-    left: 1px;
-    border: none;
+.color-fam:hover input ~ .checkmark, .color-fam input:checked ~ .checkmark {
+    top: -1px;
+    left: 0.5px;
+    border: 0 solid transparent;
     height: 23px;
     width: 23px;
 }
 
 /* Custom bgs for each color family */
-.color_fam:hover input ~ .black, .color_fam input:checked ~ .black {
+.color-fam:hover input ~ .black, .color-fam input:checked ~ .black {
 	background-color: black;
 }
 
-.color_fam:hover input ~ .blue, .color_fam input:checked ~ .blue {
+.color-fam:hover input ~ .blue, .color-fam input:checked ~ .blue {
 	background-color: blue;
 }
 
-.color_fam:hover input ~ .red, .color_fam input:checked ~ .red {
+.color-fam:hover input ~ .red, .color-fam input:checked ~ .red {
 	background-color: red;
 }
 
-.color_fam:hover input ~ .yellow, .color_fam input:checked ~ .yellow {
+.color-fam:hover input ~ .yellow, .color-fam input:checked ~ .yellow {
 	background-color: yellow;
 }
 
-.color_fam:hover input ~ .green, .color_fam input:checked ~ .green {
+.color-fam:hover input ~ .green, .color-fam input:checked ~ .green {
 	background-color: green;
 }
 
-.color_fam:hover input ~ .orange, .color_fam input:checked ~ .orange {
+.color-fam:hover input ~ .orange, .color-fam input:checked ~ .orange {
 	background-color: orange;
 }
 
-.color_fam:hover input ~ .purple, .color_fam input:checked ~ .purple {
+.color-fam:hover input ~ .purple, .color-fam input:checked ~ .purple {
 	background-color: purple;
 }
 
-.color_fam:hover input ~ .pink, .color_fam input:checked ~ .pink {
+.color-fam:hover input ~ .pink, .color-fam input:checked ~ .pink {
 	background-color: pink;
 }
 
-.color_fam:hover input ~ .gray, .color_fam input:checked ~ .gray {
+.color-fam:hover input ~ .gray, .color-fam input:checked ~ .gray {
 	background-color: gray;
 }
 
-.color_fam:hover input ~ .brown, .color_fam input:checked ~ .brown {
+.color-fam:hover input ~ .brown, .color-fam input:checked ~ .brown {
 	background-color: brown;
 }
 
-.color_fam:hover input ~ .dark, .color_fam input:checked ~ .dark {
+.color-fam:hover input ~ .dark, .color-fam input:checked ~ .dark {
 	background-color: dark;
 }
 
-.color_fam:hover input ~ .dark, .color_fam input:checked ~ .dark {
+.color-fam:hover input ~ .dark, .color-fam input:checked ~ .dark {
 	background-color: #3c3c3d;
 }
 
-.color_fam:hover input ~ .light, .color_fam input:checked ~ .light {
+.color-fam:hover input ~ .light, .color-fam input:checked ~ .light {
 	background-color: #f9ecd1;
 }
 
-.color_fam:hover input ~ .shimmer, .color_fam input:checked ~ .shimmer {
+.color-fam:hover input ~ .shimmer, .color-fam input:checked ~ .shimmer {
 	background-image: url("/images/color_family/shimmer.jpg");
   background-repeat: no-repeat;
 }
 
-.color_fam:hover input ~ .metallic, .color_fam input:checked ~ .metallic {
+.color-fam:hover input ~ .metallic, .color-fam input:checked ~ .metallic {
 	background-image: url("/images/color_family/metallic.jpg");
   background-repeat: no-repeat;
 }
 
-.color_fam:hover input ~ .other, .color_fam input:checked ~ .other {
+.color-fam:hover input ~ .other, .color-fam input:checked ~ .other {
 	background-color: #ccc;
 }
 
@@ -116,12 +121,12 @@
 }
 
 /* Show the checkmark when checked */
-.color_fam input:checked ~ .checkmark:after {
+.color-fam input:checked ~ .checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
-.color_fam .checkmark:after {
+.color-fam .checkmark:after {
     left: 8px;
     top: 4px;
     width: 5px;
