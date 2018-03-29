@@ -24,7 +24,7 @@
   <label for="">Color Type(s)</label><br>
   <% ColorFamily.all.each do |cf| %>
     <label class="color-fam"><%= cf.name.capitalize %>
-      <input type="checkbox" name="color_families[]" value="<%= cf.id %>">
+      <input type="checkbox" name="color_families[]" value="<%= cf.id %>" <%= 'checked' if @ink.color_family_ids.include?(cf.id)%>>
         <span class="checkmark <%= cf.name %>"></span>
     </label>
   <% end %>
