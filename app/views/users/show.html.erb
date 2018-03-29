@@ -22,5 +22,5 @@
 <p><%= @user.about %> </p>
 
 <% if @user == current_user %>
-  <a href="/users/#{@user.slug}/edit">edit profile</a>
+  <a href="/users/<%= @user.slug %>/edit">edit profile</a>
 <% end %>

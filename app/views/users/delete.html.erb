@@ -3,9 +3,28 @@
 <h1>Warning!!!</h1>
 <p>Are you sure you want to delete your entire account?</p>
 
-<a href="/users/<%= current_user.slug %>">no</a><br><br>
+<a href="/users/<%= @user.slug %>">no</a>
+<br><br>
 
-<form class="" action="/users/<%= current_user.slug %>/delete" method="post">
+<input type="button" name="yes" id="yes-button" value="yes">
+<br><br>
+
+<form id="confirm-form" class="hide" action="/users/<%= @user.slug %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="submit" value="yes">
+
+  <label for="password">Password</label><br>
+  <input id="password" type="password" name="password" required=""><br>
+
+  <input type="submit" name="submit" value="confirm">
 </form>
+
+<script type="text/javascript">
+
+document.getElementById("yes-button").onclick = function() {toggleHidden("confirm-form")};
+
+function toggleHidden(name) {
+  document.getElementById(name).classList.toggle("show");
+}
+
+
+</script>

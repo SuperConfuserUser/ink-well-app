@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/delete_warning/?" do
+    @user = current_user
     erb :"users/delete.html"
   end
 
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
 
   delete "/users/:slug/delete/?" do
     @user = current_user
+
+    redirect "/" if @user
+    redirect "/users/delete_warning" if !@user.authenticate(params[:password])
+
     session.clear
     @user.delete
     redirect "/"
