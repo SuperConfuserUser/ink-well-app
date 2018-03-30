@@ -1,3 +1,67 @@
+ /*--- links --- */
+a {
+  text-decoration: none;
+  color: #ff5400;
+}
+
+a:hover {
+  border-bottom: 2px solid #ff5400;
+}
+
+nav a {
+  color: black;
+  font-size: 1.5em;
+  padding-right: 20px;
+}
+
+ /*--- inputs and buttons ---*/
+input, textarea, select {
+  width: 200px;
+  padding: 10px;
+  margin: 3px 0 0 0;
+  border: 1px solid #d1d1d1;
+  background-color: #f9f9f9;
+}
+
+input:focus, textarea:focus, select:focus {
+  background-color: white;
+}
+
+textarea {
+  width: 500px;
+}
+
+select {
+  width: 222px;
+}
+
+input[type=button], input[type=submit], input[type=reset], input[type=delete]  {
+  width: 222px;
+  height: 3.25em;
+  border-color: #f23004;
+  background-color: #ff5400;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=delete]:hover {
+  background-color: #f23004;
+}
+
+input.extra-button {
+  border: 1px solid #aaa;
+  background-color: white;
+  color: #aaa;
+  transition: all 0.3s ease;
+}
+
+input.extra-button:hover {
+  background-color: #aaa;
+  color: white;
+}
+
+
 /* --- flash messages --- */
 .flash {
     padding: 1.5em 0;
