@@ -1,3 +1,13 @@
+/* --- flash messages --- */
+.flash {
+  height: 3em;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: bold;
+}
+
 /* button styles*/
 input[type=color] {
   -webkit-appearance: none;
