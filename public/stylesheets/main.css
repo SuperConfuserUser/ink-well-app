@@ -1,5 +1,6 @@
  /*--- links --- */
 a {
+  font-weight: bold;
   text-decoration: none;
   color: #ff5400;
 }
@@ -9,6 +10,7 @@ a:hover {
 }
 
 nav a {
+  font-weight: normal;
   color: black;
   font-size: 1.5em;
   padding-right: 20px;
@@ -50,14 +52,15 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, inp
 }
 
 input.extra-button {
-  border: 1px solid #aaa;
+  border: 1px solid #897d77;
   background-color: white;
-  color: #aaa;
+  color: #897d77;
   transition: all 0.3s ease;
 }
 
 input.extra-button:hover {
-  background-color: #aaa;
+  border-color: #897d77;
+  background-color: #897d77;
   color: white;
 }
 

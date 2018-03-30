@@ -2,7 +2,7 @@
 
 <ul>
   <% @users.each do |u| %>
-    <li><a href="/users/<%= u.slug %>"><%= u.username %></li>
+    <li><a href="/users/<%= u.slug %>"><%= u.username %></li></a>
       <!-- <%= u.username %></a> <%= u.pens.count %> Pens and  <%= u.inks.count %> Inks -->
   <% end %>
 </ul>
