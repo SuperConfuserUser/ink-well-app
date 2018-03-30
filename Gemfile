@@ -12,7 +12,8 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
-gem 'sinatra-flash', :require => 'sinatra/flash'
+# gem 'sinatra-flash', :require => 'sinatra/flash'
+gem 'rack-flash3'
 
 group :test do
   gem 'rspec'

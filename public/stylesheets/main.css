@@ -1,11 +1,40 @@
 /* --- flash messages --- */
 .flash {
-  height: 3em;
-  width: 100%;
-  background-color: blue;
-  color: white;
-  text-align: center;
-  font-family: bold;
+    padding: 1.5em 0;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.flash-wrapper {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 85%;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.error {
+  background: red;
+}
+
+.success {
+  background: green;
 }
 
 /* button styles*/

@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,12 +8,13 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "hand_cramps_are_lessened"
+    use Rack::Flash
   end
 
   post "/flash" do
     flash[:message] = ["testing, 1, 2, 3 ...", nil]
-    # flash[:message] = ["warning", "error"]
-    # flash[:message] = ["success", "success"]
+    flash[:message] = ["warning", "error"]
+    flash[:message] = ["success", "alert-success"]
     redirect '/'
   end
 
