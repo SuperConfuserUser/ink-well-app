@@ -11,7 +11,7 @@ class PensController < ApplicationController
 
   post "/pens/?" do
     type = params[:type] || params[:pen_type][:name]
-
+binding.pry
     valid = ![type, params[:brand], params[:pen][:model]].any?(&:empty?)
 
     redirect "/pens/new" if !valid

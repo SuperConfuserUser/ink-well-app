@@ -10,12 +10,12 @@
   <br><br>
 
   <label for="Type">Type</label><br>
-  <select name="type" id="pen_select">
+  <select name="type" id="pen_select" required>
     <option placeholder=""></option>
     <% PenType.all.each do |t| %>
       <option value="<%= t.id %>"><%= t.name.split.map(&:capitalize).join(' ') %></option>
     <% end %>
-  </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type">+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
+  </select> <button type="button" name="add_new_pen_type" id="add_new_pen_type" onclick="togglePenType()" >+</button> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type" required disabled>
   <br><br>
 
   <label for="pen[description]">Description</label>  <button type="button" id="show_suggestions">?</button> <span id="suggestions" class="hide">color, material, and so forth</span><br>
@@ -27,17 +27,34 @@
 
 <script type="text/javascript">
 
-document.getElementById("add_new_pen_type").onclick = function(){
-  toggleHidden("pen_type")
 
-  document.getElementById("pen_type").disabled = !!document.getElementById("pen_type").disabled;
 
-  document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
-};
-
-  document.getElementById("show_suggestions").onclick = function() {toggleHidden("suggestions")};
-
+//  document.getElementById("add_new_pen_type").onclick = function()
+//   toggleHidden("pen_type")
+//
+//   var pen_type = document.getElementById("pen_type"),
+//       pen_select = document.getElementById("pen_select");
+//
+//   document.getElementById("pen_type").disabled = !document.getElementById("pen_type").disabled;
+//
+//   document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
+// };
+//
+//   document.getElementById("show_suggestions").onclick = function() {toggleHidden("suggestions")};
+//
+//
+//
+//
   function toggleHidden(name) {
     document.getElementById(name).classList.toggle("show");
+};
+
+function togglePenType() {
+toggleHidden("pen_type");
+
+document.getElementById("pen_type").disabled = !document.getElementById("pen_type").disabled;
+
+document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
 }
+
 </script>
