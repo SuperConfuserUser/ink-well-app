@@ -16,8 +16,13 @@
 </head>
 <body>
   <div class="wrapper">
+  <% if !!flash[:message] %>
+  <div class="flash <%= flash[:message].last %>">
+    <%= flash[:message].first %>
+  </div>
+  <% end %>
 
-    <nav>
+   <nav>
       <a href="/">Inkwell</a>
       <a href="/users">Users</a>
       <a href="/pens">Pens</a>
