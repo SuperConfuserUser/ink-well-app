@@ -25,7 +25,7 @@
   <% end %>
   <div class="wrapper">
    <nav>
-      <a href="/">Inkwell</a>
+      <a href="/">InkWell</a>
       <a href="/users">Users</a>
       <a href="/pens">Pens</a>
       <a href="/inks">Inks</a>
@@ -33,6 +33,7 @@
         <a href="/users/<%= current_user.slug %>/edit">Settings</a>
         <a href="/logout">Logout</a>
       <% else %>
+        <a href="/users/new">Sign Up</a>
         <a href="/login">Login</a>
       <% end %>
     </nav>
@@ -40,7 +41,7 @@
     <%= yield %>
 
     <footer class="branding">
-      <small>&copy; 2018 <strong>InkWellApp</strong></small>
+      <small>&copy; 2018 <strong>InkWell</strong></small>
     </footer>
   </div>
 

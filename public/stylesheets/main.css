@@ -1,3 +1,5 @@
+ /*--- fonts --- */
+
  /*--- links --- */
 a {
   display: inline-block;
@@ -64,7 +66,7 @@ select {
   width: 222px;
 }
 
-input[type=button], input[type=submit], input[type=reset], input[type=delete]  {
+input[type=button], input[type=submit], input[type=reset]  {
   width: 222px;
   height: 3.25em;
   border-color: #f23004;
@@ -74,18 +76,18 @@ input[type=button], input[type=submit], input[type=reset], input[type=delete]  {
   transition: background-color 0.3s ease;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=delete]:hover {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   background-color: #f23004;
 }
 
-input.extra-button {
-  border: 1px solid #75655f;
+input.ghost-button, input[type=reset], input[value=delete] {
+  border: 2px solid #d1d1d1;
   background-color: white;
   color: #75655f;
   transition: all 0.3s ease;
 }
 
-input.extra-button:hover {
+input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
   border-color: #75655f;
   background-color: #75655f;
   color: white;
