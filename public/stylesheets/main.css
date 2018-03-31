@@ -1,12 +1,28 @@
  /*--- links --- */
 a {
+  display: inline-block;
+  position: relative;
   font-weight: bold;
   text-decoration: none;
   color: #ff5400;
 }
 
-a:hover {
-  border-bottom: 2px solid #ff5400;
+/*a:hover {
+  border-bottom: 1.5px solid #ff5400;
+}*/
+
+a:after {
+  display: block;
+  content: '';
+  border-bottom: solid 1.5px #ff5400;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: 100% 50%;
+}
+
+a:hover:after {
+  transform: scaleX(1);
+  transform-origin: 0% 50%;
 }
 
 nav a {
@@ -14,6 +30,17 @@ nav a {
   color: black;
   font-size: 1.5em;
   padding-right: 20px;
+  margin-bottom: 1px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  border: none;
+  color: #ff5400;
+}
+
+nav a:after {
+  padding-bottom: 2px;
 }
 
  /*--- inputs and buttons ---*/
@@ -52,15 +79,15 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, inp
 }
 
 input.extra-button {
-  border: 1px solid #897d77;
+  border: 1px solid #75655f;
   background-color: white;
-  color: #897d77;
+  color: #75655f;
   transition: all 0.3s ease;
 }
 
 input.extra-button:hover {
-  border-color: #897d77;
-  background-color: #897d77;
+  border-color: #75655f;
+  background-color: #75655f;
   color: white;
 }
 
