@@ -1,5 +1,11 @@
  /*--- fonts --- */
+ *, nav a {
+    font-family: 'Cormorant Garamond', serif;
+ }
 
+a, input, label, textarea, select {
+  font-family: 'Roboto', sans-serif;
+}
  /*--- links --- */
 a {
   display: inline-block;
