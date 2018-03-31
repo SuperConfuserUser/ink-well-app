@@ -3,7 +3,7 @@
     font-family: 'Cormorant Garamond', serif;
  }
 
-a, input, label, textarea, select, button, .flash-wrapper {
+a, input, label, textarea, select, button, .flash-wrapper, .flash-wrapper strong {
   font-family: 'Roboto', sans-serif;
 }
  /*--- links --- */
@@ -107,7 +107,7 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
     top: 0;
     width: 100%;
     padding: 1.25em 0;
-    background-color: blue;
+    background-color: DodgerBlue;
     color: white;
     z-index: 1;
     opacity: 1;
@@ -120,29 +120,41 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
   width: 85%;
 }
 
+.flash-wrapper strong {
+  font-weight: 700;
+}
+
 .closebtn {
+    cursor: pointer;
+    float: right;
     margin-left: 15px;
     color: white;
     font-weight: 700;
-    float: right;
     font-size: 1em;
-    cursor: pointer;
+    text-align: center;
     padding: 3px 6px 1px 6px;
     border-radius: 50%;
     transition: all 0.3s ease;
 }
 
 .closebtn:hover {
-    color: black;
+    color: DodgerBlue;
     background: white;
 }
 
-.error {
-  background: red;
+.error .closebtn:hover {
+  color: #ff5400;
 }
 
+.error {
+  background: #ff5400;
+}
+
+.success .closebtn:hover {
+  color: YellowGreen;
+}
 .success {
-  background: green;
+  background: YellowGreen;
 }
 
 /* button styles*/

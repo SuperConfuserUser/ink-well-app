@@ -12,9 +12,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/flash" do
-    flash[:message] = ["testing, 1, 2, 3 ...", nil]
-    flash[:message] = ["warning", "error"]
-    flash[:message] = ["success", "alert-success"]
+    flash[:message] = ["<strong>Hi:</strong> testing, 1, 2, 3 ...", nil]
+    flash[:message] = ["<strong>Uh Oh:</strong> Something went wrong.", "error"]
+    flash[:message] = ["<strong>Sweet Success:</strong>  You did it!", "success"]
     redirect '/'
   end
 
