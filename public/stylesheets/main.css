@@ -3,7 +3,7 @@
     font-family: 'Cormorant Garamond', serif;
  }
 
-a, input, label, textarea, select, button, .flash-wrapper, .flash-wrapper strong {
+a, input, label, textarea, select, option, button, .flash-wrapper, .flash-wrapper strong {
   font-family: 'Roboto', sans-serif;
 }
  /*--- links --- */

@@ -15,11 +15,13 @@
   <input type="text" name="ink[name]" required>
   <br><br>
 
-  <label for="ink[swatch]">Color Swatch</label><br>
+  <br><br>
+
+  <label for="ink[swatch]">Color Swatch</label><span class="hint"> (optional)</span><br>
   <input type="color" name="ink[swatch]" value="#000000">
   <br><br>
 
-  <label for="">Color Type(s)</label><br>
+  <label for="">Color Type</label><span class="hint"> (optional) - can belong to multiple</span><br>
   <% ColorFamily.all.each do |cf| %>
     <label class="color-fam"><%= cf.name.capitalize %>
       <input type="checkbox" name="color_families[]" value="<%= cf.id %>">
@@ -28,7 +30,7 @@
   <% end %>
   <br><br>
 
-  <label for="ink[note]">Note</label>  <label for="show-hint"><span class="small-button">?</span></label>
+  <label for="ink[note]">Note</label> <span class="hint">(optional) - anecdotes, behavior, cost, and so forth</span></label>
     <input type="checkbox" id="show-hint">
     <span id="hint">Use <em>&lt;br&gt;&lt;br&gt; </em> to create paragraphs.</span><br>
   <textarea name="ink[note]" rows="5" cols="75"></textarea>
