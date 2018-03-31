@@ -123,12 +123,13 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
 .closebtn {
     margin-left: 15px;
     color: white;
-    font-weight: bold;
-    text-align: center;
+    font-weight: 700;
     float: right;
-    font-size: 2em;
+    font-size: 1em;
     cursor: pointer;
-    transition: 0.3s;
+    padding: 3px 6px 1px 6px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .closebtn:hover {
