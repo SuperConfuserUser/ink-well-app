@@ -3,7 +3,7 @@
     font-family: 'Cormorant Garamond', serif;
  }
 
-a, input, label, textarea, select {
+a, input, label, textarea, select, button {
   font-family: 'Roboto', sans-serif;
 }
  /*--- links --- */
@@ -35,7 +35,7 @@ a:hover:after {
 }
 
 nav a {
-  font-weight: normal;
+  font-weight: 400;
   color: black;
   font-size: 1.5em;
   padding-right: 20px;
@@ -54,8 +54,8 @@ nav a:after {
 
  /*--- inputs and buttons ---*/
 input, textarea, select {
-  width: 200px;
-  padding: 10px;
+  width: 220px;
+  padding: 8px;
   margin: 3px 0 0 0;
   border: 1px solid #d1d1d1;
   background-color: #f9f9f9;
@@ -74,8 +74,8 @@ select {
 }
 
 input[type=button], input[type=submit], input[type=reset]  {
-  width: 222px;
-  height: 3.25em;
+  width: 238px;
+  height: 2.5em;
   border-color: #f23004;
   background-color: #ff5400;
   color: white;
@@ -273,9 +273,8 @@ li.ink:hover .ink-name {
 
   /* --- Welcome Page Styles --- */
   body {
-    color: #333;
-    font-family: Sans-Serif;
-    line-height: 18px;
+    font-size: 1.15em;
+    line-height: 130%;
   }
 
   .wrapper {
@@ -286,25 +285,35 @@ li.ink:hover .ink-name {
     width: 85%;
   }
 
+  h1, h2, h3 {
+    font-weight: 600;
+  }
+
+  label {
+    font-size: 0.9em;
+  }
+
+  a, input, textarea, select, button {
+    font-size: 0.8em;
+  }
+
   h1 {
-    font-size: 36px;
-    line-height: 54px;
+    font-size: 400%;
+    line-height: 100%;
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
+    font-size: 200%;
+    line-height: 100%;
   }
 
   h3 {
-    font-size: 18px;
-    line-height: 36px;
+    font-size: 100%;
+    line-height: 100%;
   }
 
   p {
-    margin-bottom: 18px;
+    margin-bottom: 1.8em;
   }
 
   .main {
