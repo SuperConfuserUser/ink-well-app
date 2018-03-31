@@ -10,14 +10,15 @@ a, input, label, textarea, select {
 a {
   display: inline-block;
   position: relative;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
   color: #ff5400;
 }
 
-/*a:hover {
-  border-bottom: 1.5px solid #ff5400;
-}*/
+a.camo-link {
+  font-color: black;
+  font-weight: 400;
+}
 
 a:after {
   display: block;
@@ -78,7 +79,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   border-color: #f23004;
   background-color: #ff5400;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   transition: background-color 0.3s ease;
 }
 
