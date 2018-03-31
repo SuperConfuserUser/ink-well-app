@@ -20,7 +20,7 @@ a.camo-link {
   font-weight: 400;
 }
 
-a:after {
+a:after, input.link-input:after {
   display: block;
   content: '';
   border-bottom: solid 1.5px #ff5400;
@@ -29,7 +29,7 @@ a:after {
   transform-origin: 100% 50%;
 }
 
-a:hover:after {
+a:hover:after, input.link-input:hover:after{
   transform: scaleX(1);
   transform-origin: 0% 50%;
 }
@@ -70,10 +70,10 @@ textarea {
 }
 
 select {
-  width: 222px;
+  width: 238px;
 }
 
-input[type=button], input[type=submit], input[type=reset]  {
+ input[type=button], input[type=submit], input[type=reset]  {
   width: 238px;
   height: 2.5em;
   border-color: #f23004;
@@ -83,7 +83,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: background-color 0.3s ease;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
   background-color: #f23004;
 }
 
@@ -100,6 +100,44 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
   color: white;
 }
 
+a.add-button {
+  position: relative;
+  bottom: 3px;
+  left: 2px;
+  text-align: center;
+  padding: 0 5px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+a.add-button:hover {
+  color: white;
+  background: #ff5400;
+}
+
+a.add-button::after {
+  border: none;
+}
+
+input.link-input {
+  width: auto;
+  position: relative;
+  top: 3px;
+  padding: 0 4px;
+  height: auto;
+  font-size: 1.25em;
+  font-weight: 700;
+  background: white;
+  border: none;
+  color: #ff5400;
+}
+
+input.link-input:hover {
+  background: #ff5400;
+  color: white;
+}
 
 /* --- flash messages --- */
 .flash {

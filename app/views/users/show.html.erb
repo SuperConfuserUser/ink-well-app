@@ -17,7 +17,7 @@
 <p><a href="mailto:<%= @user.email %>" target="_top"><%= @user.email %></a></p>
 
 <h3><%= 'Pens' %> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
-<h3><%= 'Inks' %> (<%= @user.inks.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+<h3><%= 'Inks' %> (<%= @user.inks.count %>)<% if @user == current_user %><a class="add-button" href="/pens/new">+</a><% end %></h3>
 <br>
 <p><%= @user.about %> </p>
 
