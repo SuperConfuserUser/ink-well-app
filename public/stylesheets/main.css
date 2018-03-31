@@ -88,15 +88,16 @@ select {
 }
 
 input.ghost-button, input[type=reset], input[value=delete] {
-  border: 2px solid #d1d1d1;
+  border: 2px solid #A9A9A9;
   background-color: white;
-  color: #d1d1d1;
+  color: #A9A9A9;
   transition: all 0.3s ease;
+  margin-left: 22px;
 }
 
 input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
-  border-color: #f23004;
-  background-color: #f23004;
+  border-color: #A9A9A9;
+  background-color: #A9A9A9;
   color: white;
 }
 
@@ -125,13 +126,15 @@ input.link-input {
   width: auto;
   position: relative;
   top: 3px;
-  padding: 0 4px;
+  padding: 3px 7px;
   height: auto;
   font-size: 1.25em;
   font-weight: 700;
   background: white;
   border: none;
+  /*border-radius: 50%;*/
   color: #ff5400;
+  transition: all 0.3s ease;
 }
 
 input.link-input:hover {
@@ -371,6 +374,9 @@ li.ink:hover .ink-name {
     margin-bottom: 1.8em;
   }
 
+  form {
+    display: inline;
+  }
   .main {
     overflow: hidden;
   }

@@ -1,12 +1,10 @@
-
-
 <form class="" action="/pens/<%= @pen.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
 
-<!-- add heart checkbox -->
   <h1>Edit Pen
     <input id='fav' type='checkbox' name="pen[favorite]" value="true" <%= 'checked' if @pen.favorite %>>
       <label for='fav'>
+
           <span class="heart-off"></span>
           <span class="heart"></span>
       </label>
@@ -26,42 +24,40 @@
     <% PenType.all.each do |t| %>
       <option value="<%= t.id %>" <%= 'selected' if t.id == @pen.pen_type_id %>><%= t.name.split.map(&:capitalize).join(' ') %></option>
     <% end %>
-  </select> <input class="link-input" type="button" name="add_new_pen_type" id="add_new_pen_type" onclick="togglePenType()" value="+"> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
+  </select>
+  <input class="link-input" type="button" onclick="penTypeToggle()" value="+">
+  <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
   <br><br>
 
   <br><br>
 
-  <label for="pen[description]">Description</label> <span id="suggestions" class="hint"> (optional) - color, material, and so on</span><br>
-  <input type="text" name="pen[description]" value="<%= @pen.description %>">
+  <label for="pen[description]">Description</label> <span class="hint"> (optional) - color, material, and so on</span><br>
+  <textarea name="pen[description]" rows="1" cols="75"><%= @pen.description %></textarea>
   <br><br>
 
-  <label for="pen[note]">Note</label> <span id="note" class="hint">(optional) - anecdotes, condition, repairs, cost, and so forth</span><br>
+  <label for="pen[note]">Note</label> <span class="hint">(optional) - anecdotes, condition, repairs, cost, and so forth</span><br>
   <textarea name="pen[note]" rows="5" cols="75"><%= @pen.note %></textarea>
   <br><br>
 
   <input type="submit" name="submit" id="submit" value="edit">
 </form>
 
-<br>
 <form class="" action="/pens/<%= @pen.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" name="submit" value="delete">
 </form>
 
+
+
 <script type="text/javascript">
 
-document.getElementById("add_new_pen_type").onclick = function(){
+function penTypeToggle(){
   toggleHidden("pen_type")
 
   document.getElementById("pen_type").disabled = !!document.getElementById("pen_type").disabled;
 
   document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
 };
-
-document.getElementById("show_suggestions").onclick = function() {toggleHidden("suggestions")};
-
-document.getElementById("show_note").onclick = function(){
-  toggleHidden("note")};
 
 function toggleHidden(name) {
   document.getElementById(name).classList.toggle("show");
