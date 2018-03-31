@@ -90,13 +90,13 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
 input.ghost-button, input[type=reset], input[value=delete] {
   border: 2px solid #d1d1d1;
   background-color: white;
-  color: #75655f;
+  color: #d1d1d1;
   transition: all 0.3s ease;
 }
 
 input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
-  border-color: #75655f;
-  background-color: #75655f;
+  border-color: #f23004;
+  background-color: #f23004;
   color: white;
 }
 
