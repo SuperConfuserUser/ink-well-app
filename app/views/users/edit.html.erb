@@ -1,4 +1,4 @@
-<h1>Edit Account</h1>
+<h1>Edit Profile</h1>
 
 <form class="" action="/users/<%= current_user.slug %>" method="post">
   <input type="hidden"  name="_method" value="patch">
@@ -16,13 +16,11 @@
   <input type="text" name="user[password]">
   <br><br> -->
 
-  <label for="tagline">Tagline</label><br>
+  <label for="tagline">Tagline</label> <span class="hint">(optional) - quick, think of something clever</span><br>
   <textarea name="user[tagline]" rows="1" cols="60"><%= current_user.tagline %></textarea>
   <br><br>
 
-  <label for="description">About</label> <label for="show-hint"><span class="small-button">?</span></label>
-    <input type="checkbox" id="show-hint">
-    <span id="hint">Use <em>&lt;br&gt;&lt;br&gt; </em> to create paragraphs.</span><br>
+  <label for="description">About</label> <span class="hint">(optional)</span><br>
   <textarea name="user[about]" rows="6" cols="60"><%= current_user.about %></textarea>
   <br><br>
 
@@ -31,12 +29,9 @@
   <input type="text" name="user[avatar_link]" value="<%= current_user.avatar_link %>">
   <br><br> -->
 
-  <input type="submit" name="submit" value="edit">
-  <br><br>
+  <input type="submit" name="submit" value="Edit">
 
-  <input type="Reset" name="reset" value="reset">
+  <!-- <input type="Reset" name="reset" value="reset"> -->
 </form>
 
-<br><br>
-<!-- add new warning page to verify -->
-<a href="/users/delete_warning">delete account</a>
+<a class="ghost-link" href="/users/delete_warning">Delete</a>

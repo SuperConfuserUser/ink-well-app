@@ -73,7 +73,7 @@ select {
   width: 238px;
 }
 
- input[type=button], input[type=submit], input[type=reset]  {
+ input[type=button], input[type=submit], input[type=reset], a.ghost-link  {
   width: 238px;
   height: 2.5em;
   border-color: #f23004;
@@ -87,7 +87,7 @@ select {
   background-color: #f23004;
 }
 
-input.ghost-button, input[type=reset], input[value=delete] {
+input.ghost-button, input[type=reset], input[value=Delete], a.ghost-link {
   border: 2px solid #A9A9A9;
   background-color: white;
   color: #A9A9A9;
@@ -95,10 +95,19 @@ input.ghost-button, input[type=reset], input[value=delete] {
   margin-left: 22px;
 }
 
-input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
+input.ghost-button:hover, input[type=reset]:hover, input[value=Delete]:hover, a.ghost-link:hover {
   border-color: #A9A9A9;
   background-color: #A9A9A9;
   color: white;
+}
+
+a.ghost-link {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+a.ghost-link:after {
+  display: none;
 }
 
 a.add-button {

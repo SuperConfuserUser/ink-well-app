@@ -39,12 +39,12 @@
   <textarea name="pen[note]" rows="5" cols="75"><%= @pen.note %></textarea>
   <br><br>
 
-  <input type="submit" name="submit" id="submit" value="edit">
+  <input type="submit" name="submit" id="submit" value="Edit">
 </form>
 
 <form class="" action="/pens/<%= @pen.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="submit" value="delete">
+  <input type="submit" name="submit" value="Delete">
 </form>
 
 
