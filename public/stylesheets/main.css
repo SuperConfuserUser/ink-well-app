@@ -3,7 +3,7 @@
     font-family: 'Cormorant Garamond', serif;
  }
 
-a, input, label, textarea, select, button {
+a, input, label, textarea, select, button, .flash-wrapper {
   font-family: 'Roboto', sans-serif;
 }
  /*--- links --- */
@@ -103,10 +103,13 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
 
 /* --- flash messages --- */
 .flash {
-    padding: 1.5em 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.25em 0;
     background-color: blue;
     color: white;
-    font-weight: bold;
+    z-index: 1;
     opacity: 1;
     transition: opacity 0.2s;
 }
@@ -121,15 +124,16 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=delete]:hover {
     margin-left: 15px;
     color: white;
     font-weight: bold;
+    text-align: center;
     float: right;
-    font-size: 22px;
-    line-height: 20px;
+    font-size: 2em;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .closebtn:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: black;
+    background: white;
 }
 
 .error {
