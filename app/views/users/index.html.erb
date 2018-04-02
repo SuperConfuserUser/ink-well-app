@@ -1,8 +1,17 @@
 <h1>Users</h1>
 
-<ul>
+<ul class="user-list">
   <% @users.each do |u| %>
-    <li><a href="/users/<%= u.slug %>"><%= u.username %></li></a>
-      <!-- <%= u.username %></a> <%= u.pens.count %> Pens and  <%= u.inks.count %> Inks -->
+    <li><a class="camo-link" href="/users/<%= u.slug %>">
+      <% if u.avatar_link.present? %>
+        <img src="/images/avatars/<%= u.slug %>.jpg" alt="<%= u.username %> avatar" height="100" width="100">
+      <% else %>
+        <img src="/images/avatars/default.png" alt="<%= u.username %> avatar" height="100" width="100">
+      <% end %>
+      <div class=user-description>
+        <h2><%= u.username %></h2>
+        <span><%= u.tagline %></span>
+      </div>
+    </li></a>
   <% end %>
 </ul>

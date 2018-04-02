@@ -1,5 +1,6 @@
+
  /*--- fonts --- */
- *, nav a {
+ *, nav a, a.camo-link {
     font-family: 'Cormorant Garamond', serif;
  }
 
@@ -16,11 +17,11 @@ a {
 }
 
 a.camo-link {
-  font-color: black;
+  color: black;
   font-weight: 400;
 }
 
-a:after, input.link-input:after {
+a:after, input.link-input:after, ul.user-list li a div h2:after {
   display: block;
   content: '';
   border-bottom: solid 1.5px #ff5400;
@@ -29,7 +30,7 @@ a:after, input.link-input:after {
   transform-origin: 100% 50%;
 }
 
-a:hover:after, input.link-input:hover:after{
+a:hover:after, input.link-input:hover:after, ul.user-list li:hover a div h2:after{
   transform: scaleX(1);
   transform-origin: 0% 50%;
 }
@@ -458,4 +459,29 @@ li.ink:hover .ink-name {
     font-size: 18px;
     line-height: 24px;
   }
+}
+
+ /*--- User Index Styles ---*/
+ /*ul.user-list {
+   column-count: 2;
+ }*/
+
+ ul.user-list li a {
+   width: 100%;
+   margin-bottom: 10px;
+ }
+
+ ul.user-list li a img{
+   float: left;
+   margin-right: 20px;
+}
+
+ul.user-list li a div {
+  float: left;
+  padding: 20px 0;
+}
+
+ul.user-list li a div span {
+  font-size: 1.15em;
+  line-height: 130%;
 }
