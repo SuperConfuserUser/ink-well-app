@@ -259,11 +259,6 @@ input[type="color"]::-webkit-color-swatch {
   padding: 2px 5px;
 }
 
-.small-button:hover, .small-button:focus, .small-button:active, .small-button:checked {
-  background-color: #444;
-  color: white;
-}
-
 
 /* swatch display */
 .swatch-big {
@@ -311,20 +306,6 @@ input[type="color"]::-webkit-color-swatch {
 
 #fav:checked+label>.heart {
   display: inline-block
-}
-
-
-/* show ink hints */
-input#show-hint {
-  display:none;
-}
-
-span#hint {
-  display:none;
-}
-
-input#show-hint:checked ~ span#hint, input#show-hint:hover ~ span#hint {
-  display:inline;
 }
 
 /* ink list */
