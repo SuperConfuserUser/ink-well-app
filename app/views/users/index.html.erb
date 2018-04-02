@@ -1,14 +1,14 @@
 <h1>Users</h1>
 
-<ul class="user-list">
+<ul class="index-list">
   <% @users.each do |u| %>
     <li><a class="camo-link" href="/users/<%= u.slug %>">
       <% if u.avatar_link.present? %>
-        <img src="/images/avatars/<%= u.slug %>.jpg" alt="<%= u.username %> avatar" height="100" width="100">
+        <img src="/images/avatars/<%= u.slug %>.jpg" alt="<%= u.username %> avatar">
       <% else %>
-        <img src="/images/avatars/default.png" alt="<%= u.username %> avatar" height="100" width="100">
+        <img src="/images/avatars/default.png" alt="<%= u.username %> avatar">
       <% end %>
-      <div class=user-description>
+      <div class="user-description">
         <h2><%= u.username %></h2>
         <span><%= u.tagline %></span>
       </div>
