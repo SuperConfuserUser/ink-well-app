@@ -20,7 +20,12 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/edit/?" do
-    erb :"/users/edit.html"
+    @user = User.find_by_slug(params[:slug])
+    if @user == current_user
+      erb :"/users/edit.html"
+    else
+      redirect "/"
+    end
   end
 
   post "/users/?" do

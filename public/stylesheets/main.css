@@ -71,7 +71,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 textarea {
-  width: 500px;
+  width: 480px;
 }
 
 select {
@@ -459,4 +459,8 @@ ul.index-list li a div {
 ul.index-list li a div span {
   font-size: 1.15em;
   line-height: 130%;
+}
+
+ul.index-list li a div.pen-description {
+  padding: 0 20px 0 0;
 }

@@ -1,8 +1,14 @@
 <h1>Pens <% if logged_in? %><a href="/pens/new">+</a><% end %></h1>
 
-<ul>
+<ul class="index-list">
   <% @pens.each do |p| %>
-    <li><a href="/pens/<%= p.id %>"><%= p.pen_brand.name %> <%= p.model %>
-       <% if p.description.present? %> - <%= p.description %></h3><% end %></a></li>
+    <li>
+      <a class="camo-link" href="/pens/<%= p.id %>">
+        <div class="pen-description">
+          <h2><%= p.model %></h2>
+          <span><%= p.pen_brand.name %> <% if p.description.present? %> - <%= p.description %><% end %> </span>
+        </div>
+     </a>
+   </li>
   <% end %>
 </ul>
