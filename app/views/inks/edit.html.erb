@@ -17,11 +17,11 @@
   <input type="text" name="ink[name]" value="<%= @ink.name %>" required="">
   <br><br>
 
-  <label for="ink[swatch]">Color Swatch</label><br>
+  <label for="ink[swatch]">Color Swatch</label>  <span class="hint">(optional) - it'd be nice to have</span><br>
   <input type="color" name="ink[swatch]" placeholder="#000000" value="<%= @ink.swatch %>">
   <br><br>
 
-  <label for="">Color Type(s)</label><br>
+  <label for="">Color Category</label> <span class="hint">(optional) - can belong to multiple categories</span><br>
   <% ColorFamily.all.each do |cf| %>
     <label class="color-fam"><%= cf.name.capitalize %>
       <input type="checkbox" name="color_families[]" value="<%= cf.id %>" <%= 'checked' if @ink.color_family_ids.include?(cf.id)%>>
@@ -30,17 +30,15 @@
   <% end %>
   <br><br>
 
-  <label for="ink[note]">Note</label>  <label for="show-hint"><span class="small-button">?</span></label>
-    <input type="checkbox" id="show-hint">
-    <span id="hint">Use <em>&lt;br&gt;&lt;br&gt; </em> to create paragraphs.</span><br>
+  <label for="ink[note]">Note</label>
+    <span class="hint">(optional) - anecdotes, behavior, qualities, cost, and so on</span><br>
   <textarea name="ink[note]" rows="5" cols="75"></textarea>
   <br><br>
 
-  <input type="submit" name="submit" value="edit">
+  <input type="submit" name="submit" value="Edit">
 </form>
 
-<br>
 <form class="" action="/inks/<%= @ink.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="submit" value="delete">
+  <input class="ghost-button" type="submit" name="submit" value="Delete">
 </form>

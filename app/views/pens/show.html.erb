@@ -14,12 +14,11 @@
 
 <% if @pen.user == current_user %>
   <br><br>
-  <a href="/pens/<%= @pen.id %>/edit">edit</a>
-  <br><br>
+  <a href="/pens/<%= @pen.id %>/edit" class="button-link">Edit</a>
 
   <form class="" action="/pens/<%= @pen.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" name="submit" value="delete">
+    <input class="ghost-button" type="submit" name="submit" value="Delete">
   </form>
 <% end %>
 

@@ -34,6 +34,10 @@ a:hover:after, input.link-input:hover:after{
   transform-origin: 0% 50%;
 }
 
+a.camo-link:after, a.button-link:after, a.ghost-link:after {
+  display: none;
+}
+
 nav a {
   font-weight: 400;
   color: black;
@@ -83,7 +87,7 @@ select {
   transition: background-color 0.3s ease;
 }
 
- input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, a.button-link:hover {
   background-color: #f23004;
 }
 
@@ -101,16 +105,23 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=Delete]:hover, a.
   color: white;
 }
 
+a.button-link {
+  width: 238px;
+  text-align: center;
+  padding: 5px 0 6px 0;
+  border: 1px solid #f23004;
+  background-color: #ff5400;
+  color: white;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
 a.ghost-link {
   width: 234px;
   text-align: center;
   padding: 5px 0;
   font-weight: 700;
   transition: background-color 0.3s ease;
-}
-
-a.ghost-link:after {
-  display: none;
 }
 
 a.add-button {
@@ -144,7 +155,6 @@ input.link-input {
   font-weight: 700;
   background: white;
   border: none;
-  /*border-radius: 50%;*/
   color: #ff5400;
   transition: all 0.3s ease;
 }
