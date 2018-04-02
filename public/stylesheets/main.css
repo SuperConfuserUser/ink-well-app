@@ -73,7 +73,7 @@ select {
   width: 238px;
 }
 
- input[type=button], input[type=submit], input[type=reset], a.ghost-link  {
+ input[type=button], input[type=submit], input[type=reset] {
   width: 238px;
   height: 2.5em;
   border-color: #f23004;
@@ -102,8 +102,11 @@ input.ghost-button:hover, input[type=reset]:hover, input[value=Delete]:hover, a.
 }
 
 a.ghost-link {
+  width: 234px;
   text-align: center;
-  padding-bottom: 0;
+  padding: 5px 0;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
 }
 
 a.ghost-link:after {
