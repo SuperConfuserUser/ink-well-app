@@ -161,8 +161,25 @@ input.link-input:hover {
     color: white;
     z-index: 1;
     opacity: 1;
+
+
+    -webkit-animation: fadeOut 1s forwards;
+    animation: fadeOut 1s forwards;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+
     transition: opacity 0.2s;
-}
+    }
+
+    @-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+    }
+
+    @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+    }
 
 .flash-wrapper {
   margin: 0 auto;
