@@ -1,26 +1,29 @@
 <h1><%= @user.username  %></h1>
 
-<% if @user.avatar_link.present? %>
-  <img src="/images/avatars/<%= @user.slug %>.jpg" alt="<%= @user.username %> avatar" height="180" width="180">
-<% else %>
-  <img src="/images/avatars/default.png" alt="<%= @user.username %> avatar" height="180" width="180">
-<% end %>
-
-<% if @user.name.present? %>
-  <p><%= @user.name %></p>
-<% end %>
-
 <% if @user.tagline.present?%>
-  <p><%= @user.tagline %></p>
+  <h2><%= @user.tagline %></h2><br>
 <% end %>
 
-<p><a href="mailto:<%= @user.email %>" target="_top"><%= @user.email %></a></p>
-
-<h3><%= 'Pens' %> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
-<h3><%= 'Inks' %> (<%= @user.inks.count %>)<% if @user == current_user %><a class="add-button" href="/pens/new">+</a><% end %></h3>
-<br>
 <p><%= @user.about %> </p>
 
-<% if @user == current_user %>
-  <a href="/users/<%= @user.slug %>/edit">edit profile</a>
+<div class="profile-mid clear">
+<% if @user.avatar_link.present? %>
+  <img class="profile-image" src="/images/avatars/<%= @user.slug %>.jpg" alt="<%= @user.username %> avatar">
+<% else %>
+  <img class="profile-image" src="/images/avatars/default.png" alt="<%= @user.username %> avatar">
 <% end %>
+
+<h3><%= 'Pens' %></a> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+<h3><%= 'Inks' %> (<%= @user.inks.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+
+</div>
+
+<p>
+  <% if @user.name.present? %>
+    <%= @user.name %><br>
+  <% end %>
+  <a href="mailto:<%= @user.email %>" target="_top"><%= @user.email %></a><br>
+  <% if @user == current_user %>
+    <a href="/users/<%= @user.slug %>/edit">edit profile</a>
+  <% end %>
+</p>
