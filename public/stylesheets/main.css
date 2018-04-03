@@ -442,43 +442,34 @@ input[type="color"]::-webkit-color-swatch {
 }
 
  /*--- Index List Styles ---*/
-.description {
+.index-list a {
+  width: 100%;
+  height: 100px;
   display: flex;
   display: -webkit-flex;
-  margin: auto;
-  height: 100px;
-  align-items: center;
-  border: 1px solid black;
+  margin-bottom: 16px;
 }
 
-.index-list img {
-  float: left;
-}
-
- ul.index-list li a {
-   width: 100%;
- }
-
- ul.index-list li a img, ul.index-list li a div.ink-swatch {
+ .index-list img, .ink-swatch {
    float: left;
    width: 100px;
    height: 100px;
    padding: 0;
-   margin: 0 20px 10px 0;
+   margin-right: 20px;
 }
 
-ul.index-list li a div {
+.description {
   float: left;
-  /*padding: 20px 0;*/
+  margin: auto 0;
 }
 
-ul.index-list li a div span {
+.description span {
   font-size: 1.15em;
   line-height: 130%;
 }
 
-ul.index-list li a div.pen-description {
-  /*padding: 0 20px 0 0;*/
+.pen-list a {
+  height: 70px;
 }
 
 /*--- User Profile Page --- */
