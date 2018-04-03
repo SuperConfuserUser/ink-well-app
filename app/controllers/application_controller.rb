@@ -52,6 +52,10 @@ class ApplicationController < Sinatra::Base
 			@current_user ||= User.find(session[:user_id]) if session[:user_id]
 		end
 
+    def slugged
+      User.find_by_slug(params[:slug])
+    end
+
     def flash_error(obj)
 
       obj.errors.messages.values.each do |v|

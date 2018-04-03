@@ -15,15 +15,15 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/?" do
-    @user = User.find_by_slug(params[:slug])
+    @user = slugged
     erb :"/users/show.html"
   end
 
   get "/users/:slug/edit/?" do
-    @user = User.find_by_slug(params[:slug])
+    @user = slugged
 
     if !@user == current_user
-      flash[:message] = ["<strong>Uh Oh!</strong>  You're not allowed to do that.", "error"]
+      flash_message("You're not allowed to do that.", "error")
       redirect "/"
     end
 
@@ -31,17 +31,20 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/pens/?" do
-    if @pens = User.find_by_slug(params[:slug]).pens.empty?
-      flash[:message] = ["<strong>Uh Oh!</strong>  This user doesn't have any pens.", "error"]
+    @pens = slugged.pens
+
+    if @pens.empty?
+      flash_message("This user doesn't have any pens.", "error")
       redirect "/users/#{params[:slug]}"
     end
-
+binding.pry
     erb :"/users/pens.html"
   end
 
   get "/users/:slug/inks/?" do
-    if @inks = User.find_by_slug(params[:slug]).inks.empty?
-      flash[:message] = ["<strong>Uh Oh!</strong>  This user doesn't have any inks.", "error"]
+    @inks = slugged.inks
+    if @inks.empty?
+      flash_message("This user doesn't have any inks.", "error")
       redirect "/users/#{params[:slug]}"
     end
 
@@ -61,20 +64,20 @@ class UsersController < ApplicationController
   end
 
   patch "/users/:slug/?" do
-    @user = current_user.update(params[:user])
+    @user = slugged
+    @user.update(params[:user])
 
     if !@user.save
-      flash[:message] = ["<strong>Uh Oh!</strong>  The edit didn't work.", "error"]
-      redirect "/users/#{current_user.slug}"
+      flash_error(@user)
+      redirect "/users/#{current_user.slug}/edit"
     end
 
-    flash[:message] = ["<strong>Sweet Success!</strong>  You did it!", "success"]
-    redirect "/users/#{current_user.slug}/edit"
+    redirect "/users/#{@user.slug}"
   end
 
   delete "/users/:slug/delete/?" do
     if !@user.authenticate(params[:password])
-      flash[:message] = ["<strong>Uh Oh!</strong>  That password didn't work.", "error"]
+      flash_message("That password didn't work.", "error")
       redirect "/users/delete_warning"
     end
 
@@ -82,7 +85,8 @@ class UsersController < ApplicationController
     @user.pens.each(&:delete)
     @user.inks.each(&:delete)
     @user.delete
-    flash[:message] = ["<strong>Info</strong>  The account has been deleted.", nil]
+
+    flash_message("The account has been deleted.", "success")
     redirect "/"
   end
 end
