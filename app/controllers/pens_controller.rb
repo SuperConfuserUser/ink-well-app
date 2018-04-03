@@ -9,6 +9,16 @@ class PensController < ApplicationController
     erb :"/pens/new.html"
   end
 
+  get "/pens/:id/?" do
+    @pen = Pen.find(params[:id])
+    erb :"/pens/show.html"
+  end
+
+  get "/pens/:id/edit/?" do
+    @pen = Pen.find(params[:id])
+    erb :"/pens/edit.html"
+  end
+
   post "/pens/?" do
     type = params[:type] || params[:pen_type][:name]
 
@@ -28,32 +38,27 @@ class PensController < ApplicationController
     redirect "/pens/#{@pen.id}"
   end
 
-  get "/pens/:id/?" do
-    @pen = Pen.find(params[:id])
-    erb :"/pens/show.html"
-  end
-
-  get "/pens/:id/edit/?" do
-    @pen = Pen.find(params[:id])
-    erb :"/pens/edit.html"
-  end
-
   patch "/pens/:id/?" do
     @pen = Pen.find(params[:id])
-    redirect "/pens" if !@pen
 
     type = params[:type] || params[:pen_type][:name]
 
-    valid = @pen.user == current_user && ![type, params[:brand], params[:pen][:model]].any?(&:empty?)
-
-    redirect "/pens/#{@pen.id}/edit" if !valid
-
     @pen.update(params[:pen])
     @pen.favorite = params[:pen][:favorite]
-    @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand])
-    @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+    !params[:brand].empty? ? @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand]) : @pen.pen_brand = nil
+    if !type.empty?
+      @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+    else
+      @pen.pen_type = nil
+    end
 
-    redirect @pen.save ? "/pens/#{@pen.id}" : "/pens/#{@pen.id}/edit"
+    if !@pen.save
+      flash_error(@pen)
+      redirect "/pens/#{@pen.id}/edit"
+    end
+
+    flash_message("Pen has been updated.", "success")
+    redirect "/pens/#{@pen.id}"
   end
 
   delete "/pens/:id/delete/?" do
