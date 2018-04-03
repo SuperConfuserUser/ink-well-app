@@ -12,13 +12,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/flash" do
-    flash[:message] = ["<strong>Hi!</strong> testing, 1, 2, 3 ...", nil]
-    flash[:message] = ["<strong>Uh Oh!</strong> Something went wrong.", "error"]
-    flash[:message] = ["<strong>Sweet Success!</strong>  You did it!", "success"]
+
     redirect '/'
   end
 
   get "/" do
+    flash_message("testing, 1, 2, 3 ...")
+    flash_message("Something went wrong.", "error")
+    flash_message("You did it!", "success")
     erb :welcome
   end
 
@@ -52,14 +53,15 @@ class ApplicationController < Sinatra::Base
 		end
 
     def flash_error(obj)
-      flash[:message]=[]
+
       obj.errors.messages.values.each do |v|
-        flash[:message] << ["<strong>Uh Oh!</strong>  #{v.first}", "error"]
+        flash_message(v.first, "error")
       end
     end
 
-    def flash_message(message, type=nil)
-      flash[:message]=[message, type]
+    def flash_message(message, type="info")
+      flash[:message] ||= []
+      flash[:message] << [message, type]
     end
 
 	end

@@ -184,11 +184,10 @@ input.link-input:hover {
     z-index: 1;
     opacity: 1;
 
-
     -webkit-animation: fadeOut 1s forwards;
     animation: fadeOut 1s forwards;
-    -webkit-animation-delay: 5s;
-    animation-delay: 5s;
+    -webkit-animation-delay: 8s;
+    animation-delay: 8s;
 
     transition: opacity 0.2s;
     }
@@ -209,8 +208,18 @@ input.link-input:hover {
   width: 85%;
 }
 
-.flash-wrapper strong {
+
+.flash-wrapper::before {
   font-weight: 700;
+  content: "Hey there! "
+}
+
+.success .flash-wrapper::before {
+  content: "Sweet Success! "
+}
+
+.error .flash-wrapper::before {
+  content: "Uh oh! "
 }
 
 .closebtn {

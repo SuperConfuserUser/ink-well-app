@@ -8,9 +8,8 @@ class User < ActiveRecord::Base
   has_many :ink_brands, through: :inks
   has_many :color_families, through: :inks
 
-  validates_presence_of :username, :email
-  validates :username, uniqueness: {case_sensitive: false, message: "That username is taken."}
-  validates :email, uniqueness: {case_sensitive: false, message: "There is already an account with that email. Try logging in."}
+  validates :username, uniqueness: {case_sensitive: false, message: "That username is taken."}, presence: {message: "Username can't be blank."}
+  validates :email, uniqueness: {case_sensitive: false, message: "There is already an account with that email. Try logging in."}, presence: {message: "Email can't be blank."}
 
   include Slugifiable
 end
