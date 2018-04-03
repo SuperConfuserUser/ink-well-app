@@ -50,6 +50,18 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			@current_user ||= User.find(session[:user_id]) if session[:user_id]
 		end
+
+    def flash_error(obj)
+      flash[:message]=[]
+      obj.errors.messages.values.each do |v|
+        flash[:message] << ["<strong>Uh Oh!</strong>  #{v.first}", "error"]
+      end
+    end
+
+    def flash_message(message, type=nil)
+      flash[:message]=[message, type]
+    end
+
 	end
 
 end

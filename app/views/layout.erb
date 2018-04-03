@@ -18,12 +18,14 @@
 </head>
 <body>
   <% if !!flash[:message] %>
-  <div class="flash <%= flash[:message].last %>">
-    <div class="flash-wrapper">
-      <span class="closebtn" onclick="this.parentElement.parentElement.style.display='none';">&#10006;</span>
-      <%= flash[:message].first %>
+    <% flash[:message].each do |m| %>
+    <div class="flash <%= m.last %>">
+      <div class="flash-wrapper">
+        <span class="closebtn" onclick="this.parentElement.parentElement.style.display='none';">&#10006;</span>
+        <%= m.first %>
+      </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
   <div class="wrapper">
    <nav>
