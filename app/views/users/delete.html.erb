@@ -3,10 +3,9 @@
 <h1>Warning!!!</h1>
 <p>Are you sure you want to delete your entire account?</p>
 
-<a href="/users/<%= @user.slug %>">no</a>
-<br><br>
+<a class="button-link" href="/users/<%= @user.slug %>">no</a>
 
-<input type="button" name="yes" id="yes-button" value="yes">
+<input class="ghost-button" type="button" name="yes" id="yes-button" value="yes">
 <br><br>
 
 <form id="confirm-form" class="hide" action="/users/<%= @user.slug %>/delete" method="post">
@@ -25,6 +24,5 @@ document.getElementById("yes-button").onclick = function() {toggleHidden("confir
 function toggleHidden(name) {
   document.getElementById(name).classList.toggle("show");
 }
-
 
 </script>

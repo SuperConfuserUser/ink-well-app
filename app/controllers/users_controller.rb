@@ -21,49 +21,67 @@ class UsersController < ApplicationController
 
   get "/users/:slug/edit/?" do
     @user = User.find_by_slug(params[:slug])
-    if @user == current_user
-      erb :"/users/edit.html"
-    else
+
+    if !@user == current_user
+      flash[:message] = ["<strong>Uh Oh!</strong>  You're not allowed to do that.", "error"]
       redirect "/"
     end
+
+    erb :"/users/edit.html"
   end
 
   get "/users/:slug/pens/?" do
-    @pens = User.find_by_slug(params[:slug]).pens
+    if @pens = User.find_by_slug(params[:slug]).pens.empty?
+      flash[:message] = ["<strong>Uh Oh!</strong>  This user doesn't have any pens.", "error"]
+      redirect "/users/#{params[:slug]}"
+    end
+
     erb :"/users/pens.html"
   end
 
   get "/users/:slug/inks/?" do
-    @inks = User.find_by_slug(params[:slug]).inks
+    if @inks = User.find_by_slug(params[:slug]).inks.empty?
+      flash[:message] = ["<strong>Uh Oh!</strong>  This user doesn't have any inks.", "error"]
+      redirect "/users/#{params[:slug]}"
+    end
+
     erb :"/users/inks.html"
   end
 
   post "/users/?" do
     @user = User.new(params[:user])
+
     if @user.save
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
-    else
-      redirect "/users/new"
     end
+
+    redirect "/users/new"
   end
 
   patch "/users/:slug/?" do
-    @user = current_user
-    @user.update(params[:user])
-    redirect @user.save ? "/users/#{current_user.slug}" : "/users/#{current_user.slug}/edit"
+    @user = current_user.update(params[:user])
+
+    if !@user.save
+      flash[:message] = ["<strong>Uh Oh!</strong>  The edit didn't work.", "error"]
+      redirect "/users/#{current_user.slug}"
+    end
+
+    flash[:message] = ["<strong>Sweet Success!</strong>  You did it!", "success"]
+    redirect "/users/#{current_user.slug}/edit"
   end
 
   delete "/users/:slug/delete/?" do
-    @user = current_user
-
-    redirect "/" if @user
-    redirect "/users/delete_warning" if !@user.authenticate(params[:password])
+    if !@user.authenticate(params[:password])
+      flash[:message] = ["<strong>Uh Oh!</strong>  That password didn't work.", "error"]
+      redirect "/users/delete_warning"
+    end
 
     session.clear
     @user.pens.each(&:delete)
     @user.inks.each(&:delete)
     @user.delete
+    flash[:message] = ["<strong>Info</strong>  The account has been deleted.", nil]
     redirect "/"
   end
 end

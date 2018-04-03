@@ -20,14 +20,17 @@
   <% if @user.pens.count == 0 %>
     Pens (0)
   <% else %>
-    <a class="profile-link" href="<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %>
+    <a class="profile-link" href="<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a>
   <% end %>
+  <% if @user == current_user %><a href="/pens/new">+</a><% end %>
 </h3>
 <h3>
   <% if @user.inks.count == 0 %>
     Inks (0)
   <% else %>
-    <a class="profile-link" href="<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %>
+    <a class="profile-link" href="<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a>
+  <% end %>
+    <% if @user == current_user %><a href="/pens/new">+</a>
   <% end %>
 </h3>
 
