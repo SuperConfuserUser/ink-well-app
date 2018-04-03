@@ -1,6 +1,6 @@
 
  /*--- fonts --- */
- *, nav a, a.camo-link {
+ *, nav a, a.camo-link, a.profile-link {
     font-family: 'Cormorant Garamond', serif;
  }
 
@@ -48,7 +48,15 @@ nav a {
   transition: color 0.3s ease;
 }
 
-nav a:hover {
+a.profile-link {
+  font-weight: 600;
+  color: black;
+  font-size: 100%;
+  line-height: 100%;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, a.profile-link:hover {
   border: none;
   color: #ff5400;
 }

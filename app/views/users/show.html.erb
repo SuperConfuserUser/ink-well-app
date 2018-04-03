@@ -13,11 +13,12 @@
   <img class="profile-image" src="/images/avatars/default.png" alt="<%= @user.username %> avatar">
 <% end %>
 
-<h3><%= 'Pens' %></a> (<%= @user.pens.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
-<h3><%= 'Inks' %> (<%= @user.inks.count %>) <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
+<h3><a class="profile-link" href="users/<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3><br>
+<h3><a class="profile-link" href="users/<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
 
 </div>
 
+<br><br><br>
 <p>
   <% if @user.name.present? %>
     <%= @user.name %><br>
