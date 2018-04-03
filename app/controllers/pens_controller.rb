@@ -11,17 +11,21 @@ class PensController < ApplicationController
 
   post "/pens/?" do
     type = params[:type] || params[:pen_type][:name]
-binding.pry
-    valid = ![type, params[:brand], params[:pen][:model]].any?(&:empty?)
-
-    redirect "/pens/new" if !valid
 
     @pen = Pen.new(params[:pen])
-    @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand])
-    @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+
+    @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand]) if !params[:brand].empty?
+    if !type.empty?
+      @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
+    end
     @pen.user = current_user if current_user
 
-    redirect @pen.save ? "/pens/#{@pen.id}" : "/pens/new"
+    if !@pen.save
+      flash_error(@pen)
+      redirect "pens/new"
+    end
+
+    redirect "/pens/#{@pen.id}"
   end
 
   get "/pens/:id/?" do

@@ -4,5 +4,7 @@ class Pen < ActiveRecord::Base
   belongs_to :pen_type
   has_one :ink
 
-  validates_presence_of :pen_type, :pen_brand, :model
+  validates :pen_type, presence: {message: "Type can't be blank."}
+  validates :pen_brand, presence: {message: "Brand can't be blank."}
+  validates :model, presence: {message: "Model can't be blank."}
 end

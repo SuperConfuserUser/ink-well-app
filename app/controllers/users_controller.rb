@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       flash_message("This user doesn't have any pens.", "error")
       redirect "/users/#{params[:slug]}"
     end
-binding.pry
+
     erb :"/users/pens.html"
   end
 
