@@ -442,13 +442,21 @@ input[type="color"]::-webkit-color-swatch {
 }
 
  /*--- Index List Styles ---*/
- /*ul.index-list {
-   column-count: 2;
- }*/
+.description {
+  display: flex;
+  display: -webkit-flex;
+  margin: auto;
+  height: 100px;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.index-list img {
+  float: left;
+}
 
  ul.index-list li a {
    width: 100%;
-   margin-bottom: 10px;
  }
 
  ul.index-list li a img, ul.index-list li a div.ink-swatch {
@@ -456,12 +464,12 @@ input[type="color"]::-webkit-color-swatch {
    width: 100px;
    height: 100px;
    padding: 0;
-   margin-right: 20px;
+   margin: 0 20px 10px 0;
 }
 
 ul.index-list li a div {
   float: left;
-  padding: 20px 0;
+  /*padding: 20px 0;*/
 }
 
 ul.index-list li a div span {
@@ -470,18 +478,26 @@ ul.index-list li a div span {
 }
 
 ul.index-list li a div.pen-description {
-  padding: 0 20px 0 0;
+  /*padding: 0 20px 0 0;*/
 }
 
 /*--- User Profile Page --- */
-.profile-mid {
-  display: block;
-  margin-bottom: 20px;
-}
-
 .profile-image {
   float: left;
   width: 200px;
   height: 200px;
-  padding: 0 20px 20px 0;
+  padding: 0 30px 30px 0;
+}
+
+.profile-data {
+  position: relative;
+  height: 200px;
+  margin-left: 230px;
+}
+
+.profile-data p {
+  position: absolute;
+  margin-bottom: 0;
+  bottom: -0.5em;
+  left: 0;
 }

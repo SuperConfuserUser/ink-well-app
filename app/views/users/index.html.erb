@@ -10,7 +10,9 @@
       <% end %>
       <div class="description">
         <h2><%= u.username %></h2>
-        <span><%= u.tagline %></span>
+        <% if u.tagline.present? %>
+          <span><%= u.tagline %></span>
+        <% end %>
       </div>
     </li></a>
   <% end %>

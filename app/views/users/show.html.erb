@@ -4,21 +4,21 @@
   <h2><%= @user.tagline %></h2><br>
 <% end %>
 
-<p><%= @user.about %> </p>
+<% if @user.about.present? %>
+  <p><%= @user.about %> </p>
+<% end %>
 
-<div class="profile-mid clear">
+
 <% if @user.avatar_link.present? %>
   <img class="profile-image" src="/images/avatars/<%= @user.slug %>.jpg" alt="<%= @user.username %> avatar">
 <% else %>
   <img class="profile-image" src="/images/avatars/default.png" alt="<%= @user.username %> avatar">
 <% end %>
 
-<h3><a class="profile-link" href="users/<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3><br>
+<div class="profile-data">
+<h3><a class="profile-link" href="users/<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
 <h3><a class="profile-link" href="users/<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a> <% if @user == current_user %><a href="/pens/new">+</a><% end %></h3>
 
-</div>
-
-<br><br><br>
 <p>
   <% if @user.name.present? %>
     <%= @user.name %><br>
@@ -28,3 +28,4 @@
     <a href="/users/<%= @user.slug %>/edit">edit profile</a>
   <% end %>
 </p>
+</div>
