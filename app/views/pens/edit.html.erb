@@ -4,29 +4,26 @@
   <h1>Edit Pen
     <input id='fav' type='checkbox' name="pen[favorite]" value="true" <%= 'checked' if @pen.favorite %>>
       <label for='fav'>
-
           <span class="heart-off"></span>
           <span class="heart"></span>
       </label>
   </h1>
 
   <label for="brand">Brand</label><br>
-  <input type="text" name="brand" value="<%= @pen.pen_brand.name %>">
+  <input type="text" name="brand" value="<%= @pen.pen_brand.name %>" required>
   <br><br>
 
   <label for="pen[model]">Model</label><br>
-  <input type="text" name="pen[model]" value="<%= @pen.model %>">
+  <input type="text" name="pen[model]" value="<%= @pen.model %>" required>
   <br><br>
 
   <label for="Type">Type</label><br>
-  <select name="type" id="pen_select">
+  <select name="type" id="pen_select" required>
     <option placeholder=""></option>
     <% PenType.all.each do |t| %>
       <option value="<%= t.id %>" <%= 'selected' if t.id == @pen.pen_type_id %>><%= t.name.split.map(&:capitalize).join(' ') %></option>
     <% end %>
-  </select>
-  <input class="link-input" type="button" onclick="penTypeToggle()" value="+">
-  <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type">
+  </select> <input class="link-input" type="button" name="add_new_pen_type" id="add_new_pen_type" onclick="togglePenType()" value="+"> <input type="text" id="pen_type" name="pen_type[name]" class="hide" placeholder="Add New Type" required disabled>
   <br><br>
 
   <br><br>
@@ -51,15 +48,16 @@
 
 <script type="text/javascript">
 
-function penTypeToggle(){
-  toggleHidden("pen_type")
-
-  document.getElementById("pen_type").disabled = !!document.getElementById("pen_type").disabled;
-
-  document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
-};
-
 function toggleHidden(name) {
   document.getElementById(name).classList.toggle("show");
+};
+
+function togglePenType() {
+toggleHidden("pen_type");
+
+document.getElementById("pen_type").disabled = !document.getElementById("pen_type").disabled;
+
+document.getElementById("pen_select").disabled = !document.getElementById("pen_select").disabled;
 }
+
 </script>
