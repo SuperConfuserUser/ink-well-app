@@ -1,0 +1,14 @@
+<h1>Pens <% if @pens.first.user == current_user %><a href="/pens/new">+</a><% end %></h1>
+
+<ul class="index-list pen-list">
+  <% @pens.each do |p| %>
+    <li>
+      <a class="camo-link" href="/pens/<%= p.id %>">
+        <div class="description">
+          <h2><%= p.model %></h2>
+          <span><%= p.pen_brand.name %> <% if p.description.present? %> - <%= p.description %><% end %> </span>
+        </div>
+     </a>
+   </li>
+  <% end %>
+</ul>

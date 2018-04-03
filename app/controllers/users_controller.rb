@@ -28,6 +28,16 @@ class UsersController < ApplicationController
     end
   end
 
+  get "/users/:slug/pens/?" do
+    @pens = User.find_by_slug(params[:slug]).pens
+    erb :"/users/pens.html"
+  end
+
+  get "/users/:slug/inks/?" do
+    @inks = User.find_by_slug(params[:slug]).inks
+    erb :"/users/inks.html"
+  end
+
   post "/users/?" do
     @user = User.new(params[:user])
     if @user.save

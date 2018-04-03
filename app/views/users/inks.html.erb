@@ -1,0 +1,15 @@
+<h1>Inks <% if @inks.first.user == current_user %><a href="/inks/new">+</a><% end %></h1>
+
+<ul class="index-list">
+  <% @inks.each do |i| %>
+    <li class="ink">
+      <a class="camo-link" href="/inks/<%= i.id %>">
+        <div class="ink-swatch" style="background: <%= i.swatch if i.swatch %>"></div>
+        <div class="description">
+           <h2><%= i.name %></h2>
+           <span><%= i.ink_brand.name %></span>
+         </div>
+      </a>
+    </li>
+  <% end %>
+</ul>
