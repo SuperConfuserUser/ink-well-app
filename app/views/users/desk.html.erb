@@ -1,0 +1,41 @@
+<h1>Ink Well-come</h1>
+
+<br>
+
+<a href="/users/<%= @user.slug %>">View profile page</a>
+
+<br><br>
+
+<h2>
+  <% if @user.pens.count == 0 %>
+    Pens (0)
+  <% else %>
+    <a class="hover-link" href="<%= @user.slug %>/pens"><%= 'Pens' %> (<%= @user.pens.count %>)</a>
+  <% end %>
+  <a href="/pens/new">+</a>
+</h2>
+
+<ul>
+  <% @user.pens.each do |p| %>
+    <li><a class="detail-link detail-link" href="/pens/<%= p.id %>"><%= p.pen_brand.name %> - <%= p.model %></a></li>
+  <% end %>
+</ul>
+
+<br>
+
+<h2>
+  <% if @user.inks.count == 0 %>
+    Inks (0)
+  <% else %>
+    <a class="hover-link" href="<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a>
+  <% end %>
+  <a href="/inks/new">+</a>
+</h2>
+
+<ul>
+  <% @user.inks.each do |i| %>
+    <li><a class="detail-link" href="/inks/<%= i.id %>"><%= i.ink_brand.name %> - <%= i.name %></a></li>
+  <% end %>
+</ul>
+
+<br>

@@ -11,16 +11,13 @@ class ApplicationController < Sinatra::Base
     use Rack::Flash
   end
 
-  post "/flash" do
-
-    redirect '/'
-  end
-
   get "/" do
+    redirect "users/desk" if logged_in?
     erb :index
   end
 
   get '/login/?' do
+    redirect "users/desk" if logged_in?
     erb :index
   end
 
@@ -34,8 +31,9 @@ class ApplicationController < Sinatra::Base
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/users/desk"
     else
+      flash_message("That didn't work.", "error")
       redirect "/login"
     end
   end

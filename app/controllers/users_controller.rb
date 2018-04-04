@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     erb :"/users/new.html"
   end
 
+  get "/users/desk/?" do
+    @user = current_user
+    erb :"users/desk.html"
+  end
+
   get "/users/delete_warning/?" do
     @user = current_user
     erb :"users/delete.html"
