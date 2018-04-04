@@ -17,14 +17,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    flash_message("testing, 1, 2, 3 ...")
-    flash_message("Something went wrong.", "error")
-    flash_message("You did it!", "success")
-    erb :welcome
+    erb :index
   end
 
   get '/login/?' do
-    erb :welcome
+    erb :index
   end
 
   get '/logout/?' do
