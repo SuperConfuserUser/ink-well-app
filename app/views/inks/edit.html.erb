@@ -14,21 +14,25 @@
   <br><br>
 
   <label for="ink[name]">Name</label><br>
-  <input type="text" name="ink[name]" value="<%= @ink.name %>" required="">
+  <input type="text" name="ink[name]" value="<%= @ink.name %>" required>
   <br><br>
 
-  <label for="ink[swatch]">Color Swatch</label>  <span class="hint">(optional) - it'd be nice to have</span><br>
+  <br><br>
+
+  <label for="ink[swatch]">Color Swatch</label>  <span class="hint">(optional)</span><br>
   <input type="color" name="ink[swatch]" placeholder="#000000" value="<%= @ink.swatch %>">
   <br><br>
 
-  <label for="">Color Category</label> <span class="hint">(optional) - can belong to multiple categories</span><br>
+<label for="">Color Type</label><span class="hint"> (optional) - can belong to multiple</span><br>
+<div class="color-fam-list">
   <% ColorFamily.all.each do |cf| %>
     <label class="color-fam"><%= cf.name.capitalize %>
       <input type="checkbox" name="color_families[]" value="<%= cf.id %>" <%= 'checked' if @ink.color_family_ids.include?(cf.id)%>>
         <span class="checkmark <%= cf.name %>"></span>
     </label>
   <% end %>
-  <br><br>
+</div>
+<br>
 
   <label for="ink[note]">Note</label>
     <span class="hint">(optional) - anecdotes, behavior, qualities, cost, and so on</span><br>
