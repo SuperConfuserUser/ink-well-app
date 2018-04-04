@@ -6,6 +6,7 @@ class InksController < ApplicationController
   end
 
   get "/inks/new/?" do
+    log_in!
     erb :"/inks/new.html"
   end
 
@@ -15,20 +16,19 @@ class InksController < ApplicationController
   end
 
   get "/inks/:id/edit/?" do
+    log_in!
     @ink = Ink.find(params[:id])
-    redirect "/inks" if !@ink
     erb :"/inks/edit.html"
   end
 
   post "/inks/?" do
-    @ink = Ink.new(params[:ink])
-    !params[:brand].empty? ? @ink.ink_brand = InkBrand.find_or_create_by(name: params[:brand]) : @ink.ink_brand = nil
-    @ink.color_family_ids = params[:color_families]
-    @ink.user = current_user if current_user
+    @ink = current_user.inks.create(params[:ink])
+    brand = InkBrand.find_or_create_by(name: params[:brand])
+    @ink.ink_brand = brand if brand.valid?
 
-    if !@ink.save
+    if !@ink.valid?
       flash_error(@ink)
-      redirect "/inks/new"
+      redirect back
     end
 
     redirect "/inks/#{@ink.id}"
@@ -38,22 +38,24 @@ class InksController < ApplicationController
     @ink = Ink.find(params[:id])
 
     @ink.update(params[:ink])
-    @ink.favorite = params[:ink][:favorite]
-      !params[:brand].empty? ? @ink.ink_brand = InkBrand.find_or_create_by(name: params[:brand]) : @ink.ink_brand = nil
-    @ink.color_family_ids = params[:color_families]
+    @ink.favorite = params[:ink][:favorite]  #explicitly set because params[ink][favorite] won't go through if it's false
+    brand = InkBrand.find_or_create_by(name: params[:brand])
+    @ink.ink_brand = brand.valid? ? brand : nil
 
-    if !@ink.save
+    if !@ink.valid?
       flash_error(@ink)
-      redirect "/inks/#{@ink.id}/edit"
+      redirect back
     end
 
-    flash_message("Ink has been updated.", "success")
     redirect "/inks/#{@ink.id}"
   end
 
   delete "/inks/:id/delete/?" do
+    log_in!
     @ink = Ink.find(params[:id])
     @ink.delete
+
+    flash_message("Ink deleted", "success")
     redirect "/inks"
   end
 end

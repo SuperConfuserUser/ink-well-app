@@ -25,7 +25,7 @@
   <div class="color-fam-list">
     <% ColorFamily.all.each do |cf| %>
       <label class="color-fam"><%= cf.name.capitalize %>
-        <input type="checkbox" name="color_families[]" value="<%= cf.id %>">
+        <input type="checkbox" name="ink[color_family_ids][]" value="<%= cf.id %>">
           <span class="checkmark <%= cf.name %>"></span>
       </label>
     <% end %>
