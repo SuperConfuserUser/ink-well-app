@@ -351,7 +351,7 @@ input[type="color"]::-webkit-color-swatch {
   }
 
   nav {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   h1, h2, h3 {
@@ -411,12 +411,10 @@ input[type="color"]::-webkit-color-swatch {
     font-size: 14px;
   }
 
-  .branding {
-    clear: both;
-  }
 
-  footer.branding {
-    border-top: 2px solid #ccc;
+  footer {
+    clear: both;
+    border-top: 1px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
   }
