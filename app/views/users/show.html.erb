@@ -15,7 +15,7 @@
   <img class="profile-image" src="/images/avatars/default.png" alt="<%= @user.username %> avatar">
 <% end %>
 
-<div class="profile-data">
+<div class="details">
 <h3>
   <% if @user.pens.count == 0 %>
     Pens (0)
@@ -34,7 +34,7 @@
   <% end %>
 </h3>
 
-<p>
+<p class="base-details">
   <% if @user.name.present? %>
     <%= @user.name %><br>
   <% end %>

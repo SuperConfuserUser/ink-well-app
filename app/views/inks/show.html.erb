@@ -1,29 +1,31 @@
 <h1><%= @ink.name %>
   <%= '<span class="heart"></span>' if @ink.user == current_user && @ink.favorite %></h1>
 <h2><%= @ink.ink_brand.name %></h2>
-
-  <% if @ink.swatch %>
-      <div class="swatch-big" style="background: <%= @ink.swatch %>"></div>
-  <% end %>
-
-<ul>
-  <li>
-    <% if @ink.color_families %>
-      Color Type<%= 's' if @ink.color_families.length > 1 %>:
-        <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
-    <% end %>
-  </li>
-  <li>
-    <% if @ink.note.present? %>
-      Note: <%= @ink.note %>
-    <% end %>
-  </li>
-</ul>
-
 <br>
-<p>created by <a href="/users/<%= @ink.user.slug %>"><%= @ink.user.username %></a></p>
+
+<div class="swatch" style="background: <%= @ink.swatch %>"></div>
+
+<div class="details">
+  <ul>
+    <li>
+      <% if @ink.color_families %>
+        Color Type<%= 's' if @ink.color_families.length > 1 %>:
+          <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
+      <% end %>
+    </li>
+    <li>
+      <% if @ink.note.present? %>
+        Note: <%= @ink.note %>
+      <% end %>
+    </li>
+  </ul>
+
+  <br>
+  <p class="base-details">created by <a href="/users/<%= @ink.user.slug %>"><%= @ink.user.username %></a></p>
+</div>
 
 <% if @ink.user == current_user %>
+  <br><br>
   <a href="/inks/<%= @ink.id %>/edit" class="button-link">Edit</a>
 
   <form class="" action="/inks/<%= @ink.id %>/delete" method="post">
