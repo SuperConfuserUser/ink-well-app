@@ -43,6 +43,14 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  register do
+    def auth (type)
+      condition do
+        redirect "/login" unless send("#{type}")
+      end
+    end
+  end #register
+
   helpers do
 		def logged_in?
 			!!current_user
@@ -67,7 +75,6 @@ class ApplicationController < Sinatra::Base
       flash[:message] ||= []
       flash[:message] << [message, type]
     end
-
-	end
+	end #helpers
 
 end
