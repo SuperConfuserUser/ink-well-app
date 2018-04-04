@@ -10,15 +10,15 @@
   </h1>
 
   <label for="brand">Brand</label><br>
-  <input type="text" name="brand" value="<%= @pen.pen_brand.name %>" required>
+  <input type="text" name="brand" value="<%= @pen.pen_brand.name %>" >
   <br><br>
 
   <label for="pen[model]">Model</label><br>
-  <input type="text" name="pen[model]" value="<%= @pen.model %>" required>
+  <input type="text" name="pen[model]" value="<%= @pen.model %>" >
   <br><br>
 
   <label for="Type">Type</label><br>
-  <select name="type" id="pen_select" required>
+  <select name="type" id="pen_select" >
     <option placeholder=""></option>
     <% PenType.all.each do |t| %>
       <option value="<%= t.id %>" <%= 'selected' if t.id == @pen.pen_type_id %>><%= t.name.split.map(&:capitalize).join(' ') %></option>

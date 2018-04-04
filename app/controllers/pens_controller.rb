@@ -6,6 +6,7 @@ class PensController < ApplicationController
   end
 
   get "/pens/new/?" do
+    log_in!
     erb :"/pens/new.html"
   end
 
@@ -15,24 +16,21 @@ class PensController < ApplicationController
   end
 
   get "/pens/:id/edit/?" do
+    log_in!
     @pen = Pen.find(params[:id])
     erb :"/pens/edit.html"
   end
 
   post "/pens/?" do
+    @pen = current_user.pens.create(params[:pen])
+    brand = PenBrand.find_or_create_by(name: params[:brand])
+    @pen.pen_brand = brand if brand.valid?
     type = params[:type] || params[:pen_type][:name]
+    @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type]) if !type.empty?
 
-    @pen = Pen.new(params[:pen])
-
-    @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand]) if !params[:brand].empty?
-    if !type.empty?
-      @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
-    end
-    @pen.user = current_user if current_user
-
-    if !@pen.save
+    if !@pen.valid?
       flash_error(@pen)
-      redirect "pens/new"
+      redirect back
     end
 
     redirect "/pens/#{@pen.id}"
@@ -41,33 +39,30 @@ class PensController < ApplicationController
   patch "/pens/:id/?" do
     @pen = Pen.find(params[:id])
 
-    type = params[:type] || params[:pen_type][:name]
-
     @pen.update(params[:pen])
-    @pen.favorite = params[:pen][:favorite]
-    !params[:brand].empty? ? @pen.pen_brand = PenBrand.find_or_create_by(name: params[:brand]) : @pen.pen_brand = nil
+    @pen.favorite = params[:pen][:favorite]  #explicitly set because params[ink][favorite] won't go through if it's false
+    brand = PenBrand.find_or_create_by(name: params[:brand])
+    @pen.pen_brand = brand.valid? ? brand : nil
+    type = params[:type] || params[:pen_type][:name]
     if !type.empty?
       @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type])
     else
       @pen.pen_type = nil
     end
 
-    if !@pen.save
+    if !@pen.valid?
       flash_error(@pen)
-      redirect "/pens/#{@pen.id}/edit"
+      redirect back
     end
 
-    flash_message("Pen has been updated.", "success")
     redirect "/pens/#{@pen.id}"
   end
 
   delete "/pens/:id/delete/?" do
     @pen = Pen.find(params[:id])
-
-    redirect "/pens" if !@pen
-    redirect "/pens/#{@pen.id}" if @pen.user != current_user
-
     @pen.delete
+
+    flash_message("Pen deleted.", "success")
     redirect "/pens"
   end
 end

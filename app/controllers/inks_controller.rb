@@ -51,7 +51,6 @@ class InksController < ApplicationController
   end
 
   delete "/inks/:id/delete/?" do
-    log_in!
     @ink = Ink.find(params[:id])
     @ink.delete
 

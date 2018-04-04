@@ -84,7 +84,6 @@ class UsersController < ApplicationController
   end
 
   delete "/users/:slug/delete/?" do
-    log_in!
     if !@user.authenticate(params[:password])
       flash_message("That password didn't work.", "error")
       redirect "/users/delete_warning"
