@@ -1,23 +1,29 @@
-<h1><%= @ink.ink_brand.name %> - <%= @ink.name %>
+<h1><%= @ink.name %>
   <%= '<span class="heart"></span>' if @ink.user == current_user && @ink.favorite %></h1>
+<h2><%= @ink.ink_brand.name %></h2>
 
   <% if @ink.swatch %>
       <div class="swatch-big" style="background: <%= @ink.swatch %>"></div>
   <% end %>
 
-<% if @ink.color_families %>
-  <h3>Color Type<%= 's' if @ink.color_families.length > 1 %>:
-    <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
-  </h3>
-<% end %>
+<ul>
+  <li>
+    <% if @ink.color_families %>
+      Color Type<%= 's' if @ink.color_families.length > 1 %>:
+        <%= @ink.color_families.pluck(:name).map(&:capitalize).join(", ") %>
+    <% end %>
+  </li>
+  <li>
+    <% if @ink.note.present? %>
+      Note: <%= @ink.note %>
+    <% end %>
+  </li>
+</ul>
 
-<% if @ink.note.present? %>
-  <h3>Note:</h3>
-    <p><%= @ink.note %></p>
-<% end %>
+<br>
+<p>created by <a href="/users/<%= @ink.user.slug %>"><%= @ink.user.username %></a></p>
 
 <% if @ink.user == current_user %>
-  <br><br>
   <a href="/inks/<%= @ink.id %>/edit" class="button-link">Edit</a>
 
   <form class="" action="/inks/<%= @ink.id %>/delete" method="post">

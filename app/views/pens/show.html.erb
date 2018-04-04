@@ -1,19 +1,25 @@
-<h1><%= @pen.pen_brand.name %> - <%= @pen.model %>
+<h1><%= @pen.model %>
   <%= '<span class="heart"></span>' if @pen.user == current_user && @pen.favorite %></h1>
+<h2><%= @pen.pen_brand.name %> </h2>
+<br>
 
-<h3>Type: <%= @pen.pen_type.name.split.map(&:capitalize).join(' ') %></h3>
+<ul>
+  <li>Type: <%= @pen.pen_type.name.split.map(&:capitalize).join(' ') %></li>
+  <li><% if @pen.description.present? %>
+        Description: <%= @pen.description %>
+      <% end %>
+  </li>
+  <li>
+    <% if @pen.note.present? %>
+        Note: <%= @pen.note %>
+    <% end %>
+  </li>
+</ul>
 
-<% if @pen.description.present? %>
-  <h3>Description: <%= @pen.description %></h3>
-<% end %>
-
-<% if @pen.note.present? %>
-  <h3>Note:</h3>
-    <p><%= @pen.note %></p>
-<% end %>
+<br>
+<p>created by <a href="/users/<%= @pen.user.slug %>"><%= @pen.user.username %></a></p>
 
 <% if @pen.user == current_user %>
-  <br><br>
   <a href="/pens/<%= @pen.id %>/edit" class="button-link">Edit</a>
 
   <form class="" action="/pens/<%= @pen.id %>/delete" method="post">
@@ -21,11 +27,3 @@
     <input class="ghost-button" type="submit" name="submit" value="Delete">
   </form>
 <% end %>
-
-<!-- t.integer "pen_type_id"
-t.integer "pen_brand_id"
-t.string "model"
-t.string "description"
-t.text "note"
-t.boolean "favorite"
-t.integer "user_id" -->
