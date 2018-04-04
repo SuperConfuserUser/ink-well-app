@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/new/?" do
+    redirect "users/desk" if logged_in?
     erb :"/users/new.html"
   end
 
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/delete_warning/?" do
+    log_in!
     @user = current_user
     erb :"users/delete.html"
   end
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/edit/?" do
+    log_in!
     @user = slugged
 
     if !@user == current_user
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
 
     if !@user.save
       flash_error(@user)
-      redirect "/users/new"
+      redirect back
     end
 
     session[:user_id] = @user.id
@@ -74,7 +77,7 @@ class UsersController < ApplicationController
 
     if !@user.save
       flash_error(@user)
-      redirect "/users/#{current_user.slug}/edit"
+      redirect back
     end
 
     redirect "/users/#{@user.slug}"
