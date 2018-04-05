@@ -30,10 +30,7 @@ class UsersController < ApplicationController
     log_in!
     @user = slugged
 
-    if !@user == current_user
-      flash_message("You're not allowed to do that.", "error")
-      redirect "/"
-    end
+    # redirect "/users/#{@user.slug}" if !owner(@user)
 
     erb :"/users/edit.html"
   end
