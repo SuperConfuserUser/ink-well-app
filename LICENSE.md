@@ -1,3 +1,3 @@
 ### LICENSE
 
-Default copyright laws apply.
+Default copyright laws apply. All rights reserved.
