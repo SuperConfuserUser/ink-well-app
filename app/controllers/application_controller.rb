@@ -56,6 +56,9 @@ class ApplicationController < Sinatra::Base
       redirect '/login' unless logged_in?
     end
 
+    def owner(obj)
+      obj == current_user || obj.user == current_user
+    end
 
     def slugged
       User.find_by_slug(params[:slug])

@@ -18,6 +18,7 @@ class InksController < ApplicationController
   get "/inks/:id/edit/?" do
     log_in!
     @ink = Ink.find(params[:id])
+    redirect "/inks/#{@ink.id}" if !owner(@ink)
     erb :"/inks/edit.html"
   end
 
