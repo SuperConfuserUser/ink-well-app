@@ -30,7 +30,7 @@
   <% else %>
     <a class="detail-link" href="<%= @user.slug %>/inks"><%= 'Inks' %> (<%= @user.inks.count %>)</a>
   <% end %>
-    <% if @user == current_user %><a href="/pens/new">+</a>
+    <% if @user == current_user %><a href="/inks/new">+</a>
   <% end %>
 </h3>
 
