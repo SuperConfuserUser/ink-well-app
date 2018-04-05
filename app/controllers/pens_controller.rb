@@ -18,6 +18,7 @@ class PensController < ApplicationController
   get "/pens/:id/edit/?" do
     log_in!
     @pen = Pen.find(params[:id])
+    redirect "/pens/#{@pen.id}" if !owner(@pen)
     erb :"/pens/edit.html"
   end
 
