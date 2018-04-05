@@ -6,7 +6,7 @@
       <a class="camo-link" href="/pens/<%= p.id %>">
         <div class="description">
           <h2><%= p.model %></h2>
-          <span><%= p.pen_brand.name %> <% if p.description.present? %> - <%= p.description %><% end %> </span>
+          <span><%= p.pen_brand.name %> - <%= p.pen_type.name.capitalize %><% if p.description.present? %> - <%= p.description %><% end %> </span>
         </div>
      </a>
    </li>
