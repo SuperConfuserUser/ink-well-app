@@ -23,11 +23,11 @@ class InksController < ApplicationController
   end
 
   post "/inks/?" do
-    @ink = current_user.inks.create(params[:ink])
+    @ink = current_user.inks.new(params[:ink])
     brand = InkBrand.find_or_create_by(name: params[:brand])
     @ink.ink_brand = brand if brand.valid?
 
-    if !@ink.valid?
+    if !@ink.save
       flash_error(@ink)
       redirect back
     end
@@ -43,7 +43,7 @@ class InksController < ApplicationController
     brand = InkBrand.find_or_create_by(name: params[:brand])
     @ink.ink_brand = brand.valid? ? brand : nil
 
-    if !@ink.valid?
+    if !@ink.save
       flash_error(@ink)
       redirect back
     end

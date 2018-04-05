@@ -23,13 +23,13 @@ class PensController < ApplicationController
   end
 
   post "/pens/?" do
-    @pen = current_user.pens.create(params[:pen])
+    @pen = current_user.pens.new(params[:pen])
     brand = PenBrand.find_or_create_by(name: params[:brand])
     @pen.pen_brand = brand if brand.valid?
     type = params[:type] || params[:pen_type][:name]
     @pen.pen_type = (PenType.find(params[:type]) if params[:type]) || PenType.find_or_create_by(params[:pen_type]) if !type.empty?
 
-    if !@pen.valid?
+    if !@pen.save
       flash_error(@pen)
       redirect back
     end
@@ -51,7 +51,7 @@ class PensController < ApplicationController
       @pen.pen_type = nil
     end
 
-    if !@pen.valid?
+    if !@pen.save
       flash_error(@pen)
       redirect back
     end
