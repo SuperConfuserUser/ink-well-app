@@ -180,31 +180,31 @@ input.link-input:hover {
 
 /* --- flash messages --- */
 .flash {
+    display: block;
     position: fixed;
     top: 0;
     width: 100%;
     padding: 1.25em 0;
+    height: 1.25em;
     background-color: DodgerBlue;
     color: white;
     z-index: 1;
     opacity: 1;
 
-    -webkit-animation: fadeOut 1s forwards;
-    animation: fadeOut 1s forwards;
+    -webkit-animation: slideOut 0.5s forwards;
+    animation: slideOut 0.5s forwards;
     -webkit-animation-delay: 8s;
     animation-delay: 8s;
-
-    transition: opacity 0.2s;
     }
 
-    @-webkit-keyframes fadeOut {
-    from {opacity: 1;}
-    to {opacity: 0;}
+    @-webkit-keyframes slideOut {
+    from {height: 1.25em; top: 0;}
+    to {height: 0; top: -1.25em;}
     }
 
-    @keyframes fadeOut {
-    from {opacity: 1;}
-    to {opacity: 0;}
+    @keyframes slideOut {
+    from {height: 1.25em; top: 0; opacity: 1;}
+    to {height: 0; top: -1.25em; opacity: 0;}
     }
 
 .flash-wrapper {
