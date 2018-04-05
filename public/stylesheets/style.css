@@ -466,6 +466,9 @@ input[type="color"]::-webkit-color-swatch {
    height: 100px;
    padding: 0;
    margin-right: 20px;
+}
+
+.ink-swatch {
    border: 1px solid #ccc;
 }
 
