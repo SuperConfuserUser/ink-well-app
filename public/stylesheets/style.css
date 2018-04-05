@@ -246,11 +246,11 @@ input.link-input:hover {
 }
 
 .error .closebtn:hover {
-  color: #ff5400;
+  color: FireBrick;
 }
 
 .error {
-  background: #ff5400;
+  background: FireBrick;
 }
 
 .success .closebtn:hover {

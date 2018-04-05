@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   post "/users/?" do
     @user = User.create(params[:user])
 
-    if !@user.valid
+    if !@user.valid?
       flash_error(@user)
       redirect back
     end
