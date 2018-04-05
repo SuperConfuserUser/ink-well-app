@@ -36,7 +36,8 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/pens/?" do
-    @pens = slugged.pens
+    @user = slugged
+    @pens = @user.pens
 
     if @pens.empty?
       flash_message("This user doesn't have any pens.", "error")
@@ -47,7 +48,8 @@ class UsersController < ApplicationController
   end
 
   get "/users/:slug/inks/?" do
-    @inks = slugged.inks
+    @user = slugged
+    @inks = @user.inks
     if @inks.empty?
       flash_message("This user doesn't have any inks.", "error")
       redirect "/users/#{params[:slug]}"

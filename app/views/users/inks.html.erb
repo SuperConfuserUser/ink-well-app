@@ -1,4 +1,4 @@
-<h1>Inks <% if @inks.first.user == current_user %><a href="/inks/new">+</a><% end %></h1>
+<h1><%= @user.username %>'s Inks <% if @inks.first.user == current_user %><a href="/inks/new">+</a><% end %></h1>
 
 <ul class="index-list">
   <% @inks.each do |i| %>
