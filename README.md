@@ -6,7 +6,7 @@ Fountain pen and ink database and built with Sinatra and ActiveRecord. This is s
 2. `cd ink-well-app`
 3. `bundle install`
 4. `shotgun`
-5.  Use the give server address to start the app.
+5.  Use the given server address to start the app in your browser of choice.
 
 ### Contributer's Guide
 Submit issues on this repository https://github.com/unenlightened/ink-well-app or e-mail adept_inept@yahoo.com.
