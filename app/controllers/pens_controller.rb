@@ -40,6 +40,8 @@ class PensController < ApplicationController
   patch "/pens/:id/?" do
     @pen = Pen.find(params[:id])
 
+    redirect back if !owner(@pen)
+
     @pen.update(params[:pen])
     @pen.favorite = params[:pen][:favorite]  #explicitly set because params[ink][favorite] won't go through if it's false
     brand = PenBrand.find_or_create_by(name: params[:brand])

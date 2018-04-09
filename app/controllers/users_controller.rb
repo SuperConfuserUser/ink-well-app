@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  # before_action :log_in!, only: [:delete_warning, ]
+
+  # make sure you test for owner inside patch/delete/etc. too and not just form page. users can "hack" into to those routes in other ways
+  # validates_associated to make sure everything works ie. brand invalid makes pen invalid
+
 
   get "/users/?" do
     @users = User.all
